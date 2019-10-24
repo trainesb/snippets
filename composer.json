@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Snippets\\": "lib/Snippets",
+      "View\\": "lib/Snippets/Views",
+      "Table\\": "lib/Snippets/Tables",
+      "Controller\\": "lib/Snippets/Controllers"
+    }
+  }
+}
