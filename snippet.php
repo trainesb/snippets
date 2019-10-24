@@ -20,8 +20,7 @@ $view = new Snippets($site);
 
 
 
-
-    <?php echo $view->snippetCard(); ?>
+    <?php echo $view->toggleBtn(); ?>
 
 
     <?php echo $view->footer(); ?>
