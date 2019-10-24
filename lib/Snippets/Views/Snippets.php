@@ -4,82 +4,90 @@
 namespace View;
 
 
-use Table\Languages;
+
+use Table\Snip;
 
 class Snippets extends View {
 
-
     protected $site;
-    private $languages;
+    private $snips;
+    private $snippet_id;
     private $snippets;
-    private $query;
-    private $langId;
+    private $title;
+    private $mode;
+    private $lang_id;
 
-    public function __construct($site, $user) {
+    public function __construct($site) {
         $this->site = $site;
-        $this->languages = new Languages($site);
+        $this->snips = new Snip($site);
         $this->snippets = new \Table\Snippets($site);
+        parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY));
+        $this->snippet_id = $id;
+        $this->mode = $mode;
+        $this->lang_id = $lang_id;
+        $this->title = $this->snippets->getTitleBySnippetId($this->snippet_id);
+        $this->setTitle($this->title);
+    }
 
-        $this->query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        $this->langId = $this->languages->getId($this->query)['id'];
+    public function toggleBtn() {
+        if($this->mode === 'view') {
+            return $this->snippetCard();
+        } elseif ($this->mode === 'edit') {
+            return $this->editSnippet();
+        }
+    }
 
-        $this->setTitle($this->query);
+    public function snippetCard() {
+        $btn = '<p class="edit-snippet"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=edit">Edit Snippet</a></p>';
+        $title = '<h1 class="center snippet-title">'.$this->title.'</h1>';
+        $html = '';
+        $html_snapshot = '';
+        $snips = $this->snips->getBySnippetId($this->snippet_id);
 
-        if($user) {
-            if($user->isStaff()) {
-                $this->addLink("./staff.php", "Staff");
+        foreach ($snips as $snip) {
+            $snip_id = $snip['id'];
+            $text = $snip['text'];
+            $tag = $snip['tag'];
+            if($tag === 'pre') {
+                $text = base64_decode($text);
+                $html_snapshot = '<pre id="'.$snip_id.'"><code>'.$text.'</code></pre>';
+
+                $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+                $code = str_replace("&amp;hellip;", "&hellip;", $code);
+                $html .= '<pre id="'.$snip_id.'"><code>'.$code.'</code></pre>';
+
+            } else {
+                $html .= '<p id="'.$snip_id.'">'.$text.'</p>';
             }
-            $this->addLink("./profile.php", "Profile");
-            $this->addLink("./logout,php", "Log Out");
-        } else {
-            $this->addLink("login.php", "Log In");
-        }
-    }
-
-    public function present() {
-        echo "<h1 class='center'>".$this->query." Snippets</h1>";
-
-        echo $this->snippets();
-    }
-
-    public function snippets() {
-        $snippets = $this->snippets->getById($this->langId);
-
-        $html = <<<HTML
-<form class="table">
-	<table>
-		<tr>
-			<th>&nbsp;</th>
-			<th>lang_id</th>
-			<th>Title</th>
-			<th>Code</th>
-			<th>Description</th>
-		</tr>
-HTML;
-
-        foreach ($snippets as $snippet) {
-            $title = $snippet["title"];
-            $description = $snippet["description"];
-            $id = $snippet["lang_id"];
-            $code = $snippet["code"];
-            $html .= <<<HTML
-		<tr>
-			<td><input type="radio" name="user"></td>
-			<td>$id</td>
-			<td>$title</td>
-			<td>$code</td>
-			<td>$description</td>
-		</tr>
-HTML;
         }
 
-        $html .= <<<HTML
-	</table>
-</form>
-HTML;
-        return $html;
-
+        return $btn . $title . $html_snapshot . $html;
     }
 
+    public function editSnippet() {
+        $btn = '<p class="done-edit"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=view">Finish Editing</a></p>';
+        $title = '<h1 class="center snippet-title" contenteditable="true">'.$this->title.'</h1>';
+        $html = '';
+        $html_snapshot = '';
+        $snips = $this->snips->getBySnippetId($this->snippet_id);
+
+        foreach ($snips as $snip) {
+            $snip_id = $snip['id'];
+            $text = $snip['text'];
+            $tag = $snip['tag'];
+            if($tag === 'pre') {
+                $text = base64_decode($text);
+                $html_snapshot = '<pre id="'.$snip_id.'"><code>'.$text.'</code></pre>';
+
+                $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+                $code = str_replace("&amp;hellip;", "&hellip;", $code);
+                $html .= '<div class="code"><pre id="'.$snip_id.'"><code contenteditable="true">'.$code.'</code></pre></div>';
+
+            } else {
+                $html .= '<div class="description" contenteditable="true"><p id="'.$snip_id.'">'.$text.'</p></div>';
+            }
+        }
+        return $btn . $title . $html_snapshot . $html;
+    }
 
 }

@@ -1,7 +1,12 @@
 <?php
+
+use View\Snippets;
+
+$open = true;
 require 'lib/site.inc.php';
-$view = new View\AddSnippet($site, $user);
+$view = new Snippets($site);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +15,15 @@ $view = new View\AddSnippet($site, $user);
 </head>
 
 <body>
-<div class="staff">
+<div class="snippet">
     <?php echo $view->nav(); ?>
 
-    <?php echo $view->present(); ?>
+
+
+    <?php echo $view->toggleBtn(); ?>
 
 
     <?php echo $view->footer(); ?>
+</div>
 </body>
 </html>

@@ -13,7 +13,8 @@ export const AddLanguage = function() {
             success: function(data) {
                 var json = parse_json(data);
                 if(json.ok) {
-                    window.alert("New Language Added!");
+                    alert("New Language Added!");
+                    window.location.reload();
                 } else {
                     alert(json.message);
                 }

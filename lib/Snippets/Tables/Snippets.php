@@ -18,10 +18,22 @@ class Snippets extends Table {
             $sql = 'INSERT INTO '.$this->tableName.' (lang_id, code, title, description) VALUES (?, ?, ?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$snippet['language'], $snippet['snippet'], $snippet['title'], $snippet['description']]);
+            $statement->execute([$snippet['language'], base64_encode($snippet['snippet']), $snippet['title'], $snippet['description']]);
             return true;
         } catch(\PDOException $e) {
             return false;
+        }
+    }
+
+    public function getTitleBySnippetId($id) {
+        try {
+            $sql = 'SELECT title FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return $statement->fetch(\PDO::FETCH_ASSOC)["title"];
+        } catch (\PDOException $e) {
+            return null;
         }
     }
 
