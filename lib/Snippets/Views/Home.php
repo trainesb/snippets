@@ -10,11 +10,13 @@ class Home extends View {
 
     protected $site;
     private $languages;
+    private $snippets;
     private $query;
 
     public function __construct($site, $user) {
         $this->site = $site;
         $this->languages = new Languages($site);
+        $this->snippets = new Snippets($site);
 
         $this->query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
         if ($this->query) {
@@ -22,8 +24,6 @@ class Home extends View {
         } else {
             $this->setTitle("Home");
         }
-
-        $this->languages = $this->languages->getAll();
 
         if ($user) {
             if ($user->isStaff()) {
@@ -38,7 +38,7 @@ class Home extends View {
     public function langLinks() {
         $html = "<div><ul>";
 
-        foreach ($this->languages as $lang) {
+        foreach ($this->languages->getAll() as $lang) {
             $html .= "<li><a href='./?" . $lang['lang'] . "'>" . $lang['lang'] . "</a>";
         }
 
@@ -46,5 +46,23 @@ class Home extends View {
         return $html;
     }
 
+    public function snipCard() {
+        $lang_id = $this->languages->getId($this->query)['id'];
+        $snippets = $this->snippets->getById($lang_id);
 
+        $html = '';
+
+        foreach ($snippets as $snippet) {
+            $id = $snippet['id'];
+            $lang_id = $snippet['lang_id'];
+            $title = $snippet['title'];
+            $html .= <<<HTML
+<div class="snip-card">
+    <h3><a href="./snippet.php?lang_id=$lang_id&id=$id">$title</a></h3>
+</div>
+HTML;
+        }
+
+        return $html;
+    }
 }

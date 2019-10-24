@@ -5,7 +5,6 @@ use View\Snippets;
 $open = true;
 require 'lib/site.inc.php';
 $view = new View\Home($site, $user);
-$snip = new Snippets($site);
 ?>
 
 
@@ -26,7 +25,7 @@ $snip = new Snippets($site);
                 <?php echo $view->langLinks(); ?>
             </div>
             <div class="right">
-                <?php echo $snip->processSnippets(); ?>
+                <?php echo $view->snipCard(); ?>
             </div>
         </div>
 

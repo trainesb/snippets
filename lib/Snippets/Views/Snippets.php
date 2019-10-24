@@ -4,59 +4,51 @@
 namespace View;
 
 
-use Table\Languages;
+
+use Table\Snip;
 
 class Snippets extends View {
 
     protected $site;
-    private $languages;
-
+    private $snips;
+    private $snippet_id;
     private $snippets;
-    private $query;
-    private $langId;
+    private $title;
 
     public function __construct($site) {
         $this->site = $site;
-        $this->languages = new Languages($site);
+        $this->snips = new Snip($site);
         $this->snippets = new \Table\Snippets($site);
-
-        $this->query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-
-        $this->langId = $this->languages->getId($this->query)['id'];
-        $this->setTitle($this->query);
+        parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY));
+        $this->snippet_id = $id;
+        $this->title = $this->snippets->getTitleBySnippetId($this->snippet_id);
+        $this->setTitle($this->title);
     }
 
-    public function snippetCard($title, $html) {
-        $html = htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
-        $html = str_replace("&amp;hellip;", "&hellip;", $html);
+    public function snippetCard() {
+        $title = '<h1 class="center snippet-title">'.$this->title.'</h1>';
+        $html = '';
+        $html_snapshot = '';
+        $snips = $this->snips->getBySnippetId($this->snippet_id);
 
-        return <<<HTML
-<figure>
-    <figcaption>$title</figcaption>
-    <pre class="line-numbers">
-        <code contenteditable spellcheck="false">
-            $html
-        </code>
-    </pre>
-</figure>
-HTML;
-    }
+        foreach ($snips as $snip) {
+            $snip_id = $snip['id'];
+            $text = $snip['text'];
+            $tag = $snip['tag'];
+            if($tag === 'pre') {
+                $text = base64_decode($text);
+                $html_snapshot = '<pre id="'.$snip_id.'"><code>'.$text.'</code></pre>';
 
-    public function processSnippets() {
-        $snippets = $this->snippets->getById($this->langId);
+                $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+                $code = str_replace("&amp;hellip;", "&hellip;", $code);
+                $html .= '<pre id="'.$snip_id.'"><code>'.$code.'</code></pre>';
 
-        $html = "<div class='container'>";
-
-        foreach ($snippets as $snippet) {
-            $title = $snippet["title"];
-            $description = $snippet["description"];
-            $id = $snippet["lang_id"];
-            //$code = $snippet["code"];
-            $code = base64_decode($snippet["code"]);
-            $html .= $this->snippetCard($title, $code);
+            } else {
+                $html .= '<p id="'.$snip_id.'">'.$text.'</p>';
+            }
         }
-        $html .= "</div>";
-        return $html;
+
+        return $title . $html_snapshot . $html;
     }
 
 }

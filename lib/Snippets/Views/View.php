@@ -4,6 +4,8 @@
 namespace View;
 
 
+use Table\Languages;
+
 class View {
     private $title = "";
     private $links = [];
@@ -13,6 +15,7 @@ class View {
         if($user->isStaff()) {
             return true;
         }
+
 
         $this->protectRedirect = $site->getRoot() . "/";
         return false;

@@ -25,6 +25,18 @@ class Snippets extends Table {
         }
     }
 
+    public function getTitleBySnippetId($id) {
+        try {
+            $sql = 'SELECT title FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return $statement->fetch(\PDO::FETCH_ASSOC)["title"];
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
     public function getById($lang_id) {
         try {
             $sql = 'SELECT * FROM '.$this->getTableName().' WHERE lang_id=?';
