@@ -19,7 +19,6 @@ class Staff extends View {
 
         $this->setTitle("Staff");
 
-        $this->addLink("./profile.php", "Profile");
         $this->addLink("post/logout.php", "Log Out");
     }
 

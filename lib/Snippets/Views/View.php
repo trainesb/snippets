@@ -47,7 +47,7 @@ HTML;
         $html = <<<HTML
 <nav>
     <ul class="left">
-        <li><a href="./">Business Name (Header)</a></li>
+        <li><a href="./">BT's Snippets</a></li>
     </ul>
 HTML;
 
@@ -65,7 +65,7 @@ HTML;
 
     public function footer() {
         return <<<HTML
-<footer><p>Copyright © 2019 (Business Name). All Rights Reserved.</p></footer>
+<footer><p>Copyright © 2019 BT. All Rights Reserved.</p></footer>
 HTML;
     }
 }

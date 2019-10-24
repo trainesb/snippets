@@ -1,7 +1,11 @@
 <?php
+
+use View\Snippets;
+
 $open = true;
 require 'lib/site.inc.php';
 $view = new View\Home($site, $user);
+$snip = new Snippets($site);
 ?>
 
 
@@ -22,7 +26,7 @@ $view = new View\Home($site, $user);
                 <?php echo $view->langLinks(); ?>
             </div>
             <div class="right">
-                <?php echo $view->snippets(); ?>
+                <?php echo $snip->processSnippets(); ?>
             </div>
         </div>
 
