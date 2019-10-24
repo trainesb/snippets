@@ -38,7 +38,7 @@ class Snippets extends View {
     }
 
     public function snippetCard() {
-        $btn = '<p class="edit-snippet"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=edit">Edit Snippet</a></p>';
+        $btn = '<div class="container"><p class="edit-snippet"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=edit">Edit Snippet</a></p>';
         $title = '<h1 class="center snippet-title">'.$this->title.'</h1>';
         $html = '';
         $html_snapshot = '';
@@ -61,11 +61,11 @@ class Snippets extends View {
             }
         }
 
-        return $btn . $title . $html_snapshot . $html;
+        return $btn . $title . $html_snapshot . $html . "</div>";
     }
 
     public function editSnippet() {
-        $btn = '<p class="done-edit"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=view">Finish Editing</a></p>';
+        $btn = '<div class="container"><p class="done-edit"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=view">Finish Editing</a></p>';
         $title = '<h1 class="center snippet-title" contenteditable="true">'.$this->title.'</h1>';
         $html = '';
         $html_snapshot = '';
@@ -87,6 +87,13 @@ class Snippets extends View {
                 $html .= '<div class="description" contenteditable="true"><p id="'.$snip_id.'">'.$text.'</p></div>';
             }
         }
+
+        $html .= <<<HTML
+</div><div class="center">
+    <button value="add-textarea" name="add-textarea" class="add-textarea">Add Textarea</button>
+    <button value="add-code" name="add-code" class="add-code">Add Code Snippet</button>
+</div>
+HTML;
         return $btn . $title . $html_snapshot . $html;
     }
 
