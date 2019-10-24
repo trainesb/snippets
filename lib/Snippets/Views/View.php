@@ -30,6 +30,10 @@ class View {
         $this->links[] = ["href" => $href, "text" => $text];
     }
 
+    public function getTitle() {
+        return $this->title;
+    }
+
     public function head() {
         return <<<HTML
 <meta charset="utf-8">

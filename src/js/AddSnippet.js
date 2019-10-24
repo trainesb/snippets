@@ -13,7 +13,8 @@ export const AddSnippet = function() {
             success: function(data) {
                 var json = parse_json(data);
                 if(json.ok) {
-                    window.alert("New Snippet Added!");
+                    alert("New Snippet Added!");
+                    window.location.reload();
                 } else {
                     alert(json.message);
                 }
