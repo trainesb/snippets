@@ -65,8 +65,8 @@ class Snippets extends View {
     }
 
     public function editSnippet() {
-        $btn = '<div class="container"><p class="done-edit"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=view">Finish Editing</a></p>';
-        $title = '<h1 class="center snippet-title" contenteditable="true">'.$this->title.'</h1>';
+        $btn = '<p class="done-edit"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=view">Finish Editing</a></p>';
+        $title = '<h1 class="center snippet-title" contenteditable="true">'.$this->title.'</h1><div class="container">';
         $html = '';
         $html_snapshot = '';
         $snips = $this->snips->getBySnippetId($this->snippet_id);

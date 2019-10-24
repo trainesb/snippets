@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/lib/Snippets" isTestSource="false" packagePrefix="Snippets\" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/Snippets/Views" isTestSource="false" packagePrefix="View\" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/Snippets/Controllers" isTestSource="false" packagePrefix="Controller\" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/Snippets/Tables" isTestSource="false" packagePrefix="Table\" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

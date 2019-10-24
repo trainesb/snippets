@@ -11260,13 +11260,68 @@ const Snippet = function() {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-textarea").click(function (event) {
         event.preventDefault();
 
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").append('<div class="description" contenteditable="true"><p></p></div>');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").append('<div class="new description" contenteditable="true"><p></p></div>');
     });
 
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-code").click(function (event) {
         event.preventDefault();
 
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").append('<div class="code"><pre><code contenteditable="true"></code></pre></div>')
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").append('<div class="new code"><pre><code contenteditable="true"></code></pre></div>')
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("p.done-edit > a").click(function (event) {
+       event.preventDefault();
+
+       var title = jquery__WEBPACK_IMPORTED_MODULE_0___default()("h1.snippet-title").text();
+       var data = [];
+
+       var i = 0;
+       jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").children().each(function () {
+           if(i !== 0) {
+               if(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('new')) {
+
+                   if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('description')) {
+                       var text = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
+                       data.push({snip_id: null, text: text});
+                   } else if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('code')) {
+                       var code = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
+                       data.push({snip_id: null, code: code});
+                   }
+               } else {
+
+                   if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('description')) {
+                       var text = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
+                       var snip_id = this.firstChild.id;
+                       data.push({snip_id: snip_id, text: text});
+                   } else if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('code')) {
+                       var code = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
+                       var snip_id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children()[0].id;
+                       data.push({snip_id: snip_id, code: code});
+                   }
+               }
+           }
+           i++;
+
+       });
+
+       console.log(data);
+
+
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/snippet.php",
+            data: {title: title, data: data},
+            method: "POST",
+            success: function(data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Error: " + error);
+            }
+        });
     });
 };
 
