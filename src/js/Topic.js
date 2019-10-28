@@ -26,4 +26,27 @@ export const Topic = function() {
             }
         });
     });
+
+    $("button.delete-doc").click(function (event) {
+        event.preventDefault();
+
+        if(confirm("Do you want to delete "+this.name+"?")) {
+            $.ajax({
+                url: "post/delete-doc.php",
+                data: {doc_id: this.id},
+                method: "POST",
+                success: function (data) {
+                    var json = parse_json(data);
+                    if (json.ok) {
+                        window.location.reload();
+                    } else {
+                        alert(json.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("Error: " + error);
+                }
+            });
+        }
+    });
 };

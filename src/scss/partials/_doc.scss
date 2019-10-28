@@ -1,0 +1,16 @@
+div.doc {
+  div.row-container {
+    position: relative;
+
+    div.left-half {
+      position: absolute;
+      top: 1em;
+      left: 7em;
+    }
+
+    div.right-half {
+      position: absolute;
+      right: 7em;
+    }
+  }
+}
