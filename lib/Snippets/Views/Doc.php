@@ -13,6 +13,7 @@ class Doc extends View {
     private $sections;
 
     private $topic;
+    private $cat;
     private $doc_id;
     private $mode;
     private $title;
@@ -26,6 +27,7 @@ class Doc extends View {
         $this->topic = $topic;
         $this->mode = $mode;
         $this->doc_id = $id;
+        $this->cat = $cat;
 
         $this->title = $this->doc->getTitleByDocId($this->doc_id);
         $this->setTitle($this->title);
@@ -60,10 +62,10 @@ class Doc extends View {
             return <<<HTML
 <div class="row-container">
     <div class="left-half">
-        $this->topic
+        <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
     </div>
     <div class="right-half">
-        <p class="done-edit"><a href="./doc.php?topic=$this->topic&id=$this->doc_id&mode=view">Finish Editing</a></p>
+        <p class="done-edit"><a href="./doc.php?cat=$this->cat&topic=$this->topic&id=$this->doc_id&mode=view">Finish Editing</a></p>
     </div>
 </div>
 
@@ -72,10 +74,10 @@ HTML;
         return <<<HTML
 <div class="row-container">
     <div class="left-half">
-        $this->topic
+        <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
     </div>
     <div class="right-half">
-        <p class="edit-snippet"><a href="./doc.php?topic=$this->topic&id=$this->doc_id&mode=edit">Edit Snippet</a></p>
+        <p class="edit-snippet"><a href="./doc.php?cat=$this->cat&topic=$this->topic&id=$this->doc_id&mode=edit">Edit Snippet</a></p>
     </div>
 </div>
 <h1 class="center snippet-title">$this->title</h1>

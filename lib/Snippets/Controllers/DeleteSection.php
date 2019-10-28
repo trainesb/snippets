@@ -15,7 +15,7 @@ class DeleteSection extends Controller {
         parent::__construct($site);
 
         $sections = new Sections($site);
-        if ($sections->deleteByDocId($post['id'])) {
+        if ($sections->deleteById($post['id'])) {
             $this->result = json_encode(["ok" => true]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error deleting snip!"]);

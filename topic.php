@@ -19,9 +19,13 @@ $view = new View\Topic($site, $user);
         <?php
         echo $view->topicTitle();
         echo $view->createDoc();
-        echo $view->topicDocs();
         ?>
     </div>
+        <?php
+
+        echo $view->topicDocs();
+        ?>
+
 
     <?php echo $view->footer(); ?>
 </div>

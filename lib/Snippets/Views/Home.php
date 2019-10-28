@@ -38,18 +38,18 @@ class Home extends View {
     public function categories() {
         $all = $this->categories->getAll();
 
-        $html = '<ul>';
+        $html = '<div class="category-container">';
         foreach ($all as $cat) {
-            $html .= '<li>'.$cat['category'].'<ul>';
+            $html .= '<div class="category-list"><ul><li>'.$cat['category'].'<ul>';
             $cat_id = $cat['id'];
             $topics = $this->topics->getByCategoryId($cat_id);
             foreach ($topics as $topic) {
                 $html .= '<li><a href="./topic.php?cat='.$cat['category'].'&topic='.$topic["topic"].'">'.$topic['topic'].'</a></li>';
             }
 
-            $html .= '</ul></li>';
+            $html .= '</ul></li></ul></div>';
         }
-        return $html . '</ul>';
+        return $html . '</div>';
     }
 
 }

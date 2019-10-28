@@ -1,9 +1,23 @@
-div.topic-head {
-  position: relative;
+div.topic {
 
-  button.create-doc {
-    position: absolute;
-    right: 7em;
-    top: 0;
+  div.topic-head {
+    position: relative;
+
+    button.create-doc {
+      position: absolute;
+      right: 7em;
+      top: 0;
+    }
   }
+
+  div.doc-head {
+    position: relative;
+
+    button.delete-doc {
+      position: absolute;
+      right: 7em;
+      top: 0;
+    }
+  }
+
 }

@@ -4,6 +4,7 @@
 namespace View;
 
 use Table\Categories;
+use Table\Sections;
 use Table\Topics;
 
 class Topic extends View {
@@ -11,6 +12,7 @@ class Topic extends View {
     private $topics;
     private $categories;
     private $docs;
+    private $sections;
 
     private $site;
     private $topic;
@@ -23,6 +25,7 @@ class Topic extends View {
         $this->topics = new Topics($this->site);
         $this->categories = new Categories($this->site);
         $this->docs = new \Table\Doc($site);
+        $this->sections = new Sections($site);
 
         parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY));
         $this->topic = $topic;
@@ -57,7 +60,7 @@ HTML;
     public function createDoc() {
         if($this->topic_id) {
             return <<<HTML
-<button class="create-doc" name="$this->topic_id" value="$this->topic">Create Document</button>
+<button class="create-doc" name="$this->topic_id" value="$this->topic" id="$this->category">Create Document</button>
 HTML;
         }
         return null;
@@ -69,7 +72,26 @@ HTML;
         $html = '<div class="container">';
 
         foreach ($docs as $doc) {
-            $html .= '<p><a href="./doc.php?topic='.$this->topic.'&id='.$doc["id"].'&mode=view">'.$doc["title"].'</a></p>';
+            $doc_id = $doc['id'];
+            $title = $doc['title'];
+            $html .= <<<HTML
+<div class="doc-head">
+    <p><a href="./doc.php?cat=$this->category&topic=$this->topic&id=$doc_id&mode=view">$title</a></p>
+    <button class="delete-doc" id='$doc_id' name='$title'><i class='fa fa-trash' aria-hidden='true'></i></button>
+</div>
+HTML;
+            $section = $this->sections->getByDocId($doc["id"]);
+            if(!empty($section)) {
+                $section = $section[0];
+
+                if($section["tag"] == 'pre') {
+                    $text = base64_decode($section['text']);
+                    $html .= '<pre><code>'.$text.'</code></pre>';
+                } else {
+                    $text = $section['text'];
+                    $html .= '<p>'.$text.'</p>';
+                }
+            }
         }
         return $html . '</div>';
     }
