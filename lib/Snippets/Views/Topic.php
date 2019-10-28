@@ -3,7 +3,6 @@
 
 namespace View;
 
-use Snippets\Site;
 use Table\Categories;
 use Table\Topics;
 
@@ -11,9 +10,11 @@ class Topic extends View {
 
     private $topics;
     private $categories;
+    private $docs;
 
     private $site;
     private $topic;
+    private $topic_id;
     private $category;
 
     public function __construct($site, $user) {
@@ -21,10 +22,14 @@ class Topic extends View {
 
         $this->topics = new Topics($this->site);
         $this->categories = new Categories($this->site);
+        $this->docs = new \Table\Doc($site);
 
         parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY));
         $this->topic = $topic;
         $this->category = $cat;
+
+        $this->topic_id = $this->topics->getIdByTopic($this->topic);
+
 
         if ($user) {
             if($user->isAdmin()) {
@@ -50,12 +55,22 @@ HTML;
     }
 
     public function createDoc() {
-        $topic_id = $this->topics->getIdByTopic($this->topic);
-        if($topic_id) {
+        if($this->topic_id) {
             return <<<HTML
-<button class="create-doc" name="$topic_id" value="$this->topic">Create Document</button>
+<button class="create-doc" name="$this->topic_id" value="$this->topic">Create Document</button>
 HTML;
         }
         return null;
+    }
+
+    public function topicDocs() {
+        $docs = $this->docs->getByTopicId($this->topic_id);
+
+        $html = '<div class="container">';
+
+        foreach ($docs as $doc) {
+            $html .= '<p><a href="./doc.php?topic='.$this->topic.'&id='.$doc["id"].'&mode=view">'.$doc["title"].'</a></p>';
+        }
+        return $html . '</div>';
     }
 }

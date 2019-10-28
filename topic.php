@@ -19,6 +19,7 @@ $view = new View\Topic($site, $user);
         <?php
         echo $view->topicTitle();
         echo $view->createDoc();
+        echo $view->topicDocs();
         ?>
     </div>
 
