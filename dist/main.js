@@ -11148,51 +11148,6 @@ const AddLanguage = function() {
 
 /***/ }),
 
-/***/ "./src/js/AddSnippet.js":
-/*!******************************!*\
-  !*** ./src/js/AddSnippet.js ***!
-  \******************************/
-/*! exports provided: AddSnippet */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddSnippet", function() { return AddSnippet; });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _parse_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse_json */ "./src/js/parse_json.js");
-
-
-
-const AddSnippet = function() {
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#add-snippet").submit(function (event) {
-        event.preventDefault();
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/add-snippet.php",
-            data: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).serialize(),
-            method: "POST",
-            success: function(data) {
-                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                if(json.ok) {
-                    alert("New Snippet Added!");
-                    window.location.reload();
-                    //window.location.assign('./snippet.php?lang_id='+json.lang_id+'&id='+json.snip_id+"&mode=edit");
-                } else {
-                    alert(json.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("Error: " + error);
-            }
-        });
-    });
-};
-
-
-/***/ }),
-
 /***/ "./src/js/Home.js":
 /*!************************!*\
   !*** ./src/js/Home.js ***!
@@ -11331,84 +11286,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const Snippet = function() {
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-textarea").click(function (event) {
-        event.preventDefault();
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").append('<div class="new description" contenteditable="true"><p></p></div>');
-    });
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-code").click(function (event) {
-        event.preventDefault();
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").append('<div class="new code"><pre><code contenteditable="true"></code></pre></div>')
-    });
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("p.done-edit > a").click(function (event) {
-       event.preventDefault();
-
-       var title = jquery__WEBPACK_IMPORTED_MODULE_0___default()("h1.snippet-title").text();
-       var data = [];
-
-       var i = 0;
-       jquery__WEBPACK_IMPORTED_MODULE_0___default()("div.container").children().each(function () {
-           if(i !== 0) {
-               if(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('new')) {
-
-                   if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('description')) {
-                       var text = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
-                       data.push({snip_id: null, text: text});
-                   } else if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('code')) {
-                       var code = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
-                       data.push({snip_id: null, code: code});
-                   }
-               } else {
-
-                   if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('description')) {
-                       var text = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
-                       var snip_id = this.firstChild.id;
-                       data.push({snip_id: snip_id, text: text});
-                   } else if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('code')) {
-                       var code = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).text();
-                       var snip_id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children()[0].id;
-                       data.push({snip_id: snip_id, code: code});
-                   }
-               }
-           }
-           i++;
-
-       });
-
-       var url = new URL(window.location.href);
-       var snippet_id = url.searchParams.get('id');
-       var lang_id = url.searchParams.get('lang_id');
-
-
-
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/snippet.php",
-            data: {title: title, snippet_id: snippet_id, data: data},
-            method: "POST",
-            success: function(data) {
-                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                if(!json.ok) {
-                    alert(json.message);
-                } else {
-                    window.location.assign('./snippet.php?lang_id='+lang_id+'&id='+snippet_id+'&mode=view');
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("Error: " + error);
-            }
-        });
-    });
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.delSnip").click(function (event) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-snip").click(function (event) {
         event.preventDefault();
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/delete-snip.php",
-            data: {id: this.id},
+            url: "post/add-snip.php",
+            data: {snippets_id: this.value, tag : this.name, text: ''},
             method: "POST",
             success: function (data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
@@ -11419,6 +11302,62 @@ const Snippet = function() {
                 }
             }
         });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("input.title").change(function (event) {
+       event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/update-snippet.php",
+            data: {snippets_id: this.id, title : this.value},
+            method: "POST",
+            success: function (data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("textarea.snip").change(function (event) {
+        event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/update-snip.php",
+            data: {id: this.id, text : this.value, class : this.name},
+            method: "POST",
+            success: function (data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.delete-snip").click(function (event) {
+        event.preventDefault();
+
+        if(confirm("Delete Snip?")) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+                url: "post/delete-snip.php",
+                data: {id: this.id},
+                method: "POST",
+                success: function (data) {
+                    var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                    if (!json.ok) {
+                        alert(json.message);
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
     });
 };
 
@@ -11438,12 +11377,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login */ "./src/js/Login.js");
 /* harmony import */ var _AddLanguage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddLanguage */ "./src/js/AddLanguage.js");
-/* harmony import */ var _AddSnippet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddSnippet */ "./src/js/AddSnippet.js");
-/* harmony import */ var _Snippets__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Snippets */ "./src/js/Snippets.js");
-/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./src/js/Home.js");
-/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../scss/app.scss */ "./src/scss/app.scss");
-/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scss_app_scss__WEBPACK_IMPORTED_MODULE_6__);
-
+/* harmony import */ var _Snippets__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Snippets */ "./src/js/Snippets.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Home */ "./src/js/Home.js");
+/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../scss/app.scss */ "./src/scss/app.scss");
+/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scss_app_scss__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -11455,10 +11392,9 @@ __webpack_require__.r(__webpack_exports__);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     new _Login__WEBPACK_IMPORTED_MODULE_1__["Login"]();
-    new _Home__WEBPACK_IMPORTED_MODULE_5__["Home"]();
-    new _Snippets__WEBPACK_IMPORTED_MODULE_4__["Snippet"]();
+    new _Home__WEBPACK_IMPORTED_MODULE_4__["Home"]();
+    new _Snippets__WEBPACK_IMPORTED_MODULE_3__["Snippet"]();
     new _AddLanguage__WEBPACK_IMPORTED_MODULE_2__["AddLanguage"]();
-    new _AddSnippet__WEBPACK_IMPORTED_MODULE_3__["AddSnippet"]();
 });
 
 

@@ -20,7 +20,9 @@ $view = new Snippets($site);
 
 
 
-    <?php echo $view->toggleBtn(); ?>
+    <?php
+    echo $view->toggleBtn();
+    ?>
 
 
     <?php echo $view->footer(); ?>

@@ -44,10 +44,12 @@ class Home extends View {
 
     public function createSnippet() {
         $lang_id = $this->lang_id;
-        return <<<HTML
+        if($lang_id) {
+            return <<<HTML
 <button class="create-snippet" name="$lang_id">Create Snippet</button>
 HTML;
-
+        }
+        return;
     }
 
     public function langLinks() {
