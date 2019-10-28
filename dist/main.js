@@ -11407,6 +11407,7 @@ const Topic = function() {
 
         var topic_id = this.name;
         var topic = this.value;
+        var cat = this.id;
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
             url: "post/add-doc.php",
@@ -11415,7 +11416,7 @@ const Topic = function() {
             success: function(data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
                 if(json.ok) {
-                    window.location.assign('./doc.php?topic='+topic+'&id='+json.doc_id+"&mode=edit");
+                    window.location.assign('./doc.php?cat='+cat+'&topic='+topic+'&id='+json.doc_id+"&mode=edit");
                 } else {
                     alert(json.message);
                 }

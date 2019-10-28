@@ -8,6 +8,7 @@ export const Topic = function() {
 
         var topic_id = this.name;
         var topic = this.value;
+        var cat = this.id;
 
         $.ajax({
             url: "post/add-doc.php",
@@ -16,7 +17,7 @@ export const Topic = function() {
             success: function(data) {
                 var json = parse_json(data);
                 if(json.ok) {
-                    window.location.assign('./doc.php?topic='+topic+'&id='+json.doc_id+"&mode=edit");
+                    window.location.assign('./doc.php?cat='+cat+'&topic='+topic+'&id='+json.doc_id+"&mode=edit");
                 } else {
                     alert(json.message);
                 }
