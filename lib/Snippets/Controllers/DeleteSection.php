@@ -5,16 +5,17 @@ namespace Controller;
 
 
 use Snippets\Site;
-use Table\Snip;
+use Table\Sections;
 
-class DeleteSnip extends Controller {
+class DeleteSection extends Controller {
 
 
-    public function __construct(Site $site, array $post) {
+    public function __construct(Site $site, array $post)
+    {
         parent::__construct($site);
 
-        $snips = new Snip($site);
-        if($snips->deleteSnipById($post['id'])) {
+        $sections = new Sections($site);
+        if ($sections->deleteByDocId($post['id'])) {
             $this->result = json_encode(["ok" => true]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error deleting snip!"]);

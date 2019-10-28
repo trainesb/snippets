@@ -15,8 +15,6 @@ $view = new View\Staff($site);
     <h1 class='center'>Staff</h1>
 
     <?php
-    echo $view->languageForm();
-    echo $view->languagesTable();
     echo $view->footer();
     ?>
 </body>

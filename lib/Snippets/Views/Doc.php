@@ -134,18 +134,18 @@ HTML;
                 }
                 $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
                 $code = str_replace("&amp;hellip;", "&hellip;", $code);
-                $html .= '<textarea class="snip" name="code" id="'.$section_id.'">'.$code.'</textarea>';
+                $html .= '<textarea class="section" name="code" id="'.$section_id.'">'.$code.'</textarea>';
 
             } else {
-                $html .= '<textarea class="snip" name="description" id="'.$section_id.'">'.$text.'</textarea>';
+                $html .= '<textarea class="section" name="description" id="'.$section_id.'">'.$text.'</textarea>';
             }
 
-            $html .= '<button class="delete-snip" id="'.$section_id.'"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+            $html .= '<button class="delete-section" id="'.$section_id.'"><i class="fa fa-trash" aria-hidden="true"></i></button>';
         }
 
         $html .= <<<HTML
-    <button value="$this->doc_id" name="textarea" class="add-snip">Add Textarea</button>
-    <button value="$this->doc_id" name="pre" class="add-snip">Add Code Snippet</button>
+    <button value="$this->doc_id" name="textarea" class="add-section">Add Textarea</button>
+    <button value="$this->doc_id" name="pre" class="add-section">Add Code Snippet</button>
 </form>
 HTML;
         return $title . $snapshot . $html;

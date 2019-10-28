@@ -5,19 +5,19 @@ namespace Controller;
 
 
 use Snippets\Site;
-use Table\Snip;
+use Table\Doc;
 
-class AddSnip extends Controller {
+class UpdateDoc extends Controller {
 
     public function __construct(Site $site, array $post) {
         parent::__construct($site);
 
-        $snips = new Snip($site);
+        $doc = new Doc($site);
 
+        $title = $post['title'];
+        $topic_id = $post['topic_id'];
 
-
-        if(!empty($post)) {
-            $snips->add($post);
+        if($doc->updateTitleById($title, $topic_id)) {
             $this->result = json_encode(["ok" => true]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error"]);

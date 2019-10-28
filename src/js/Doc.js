@@ -1,14 +1,14 @@
 import $ from 'jquery';
 import {parse_json} from './parse_json';
 
-export const Snippet = function() {
+export const Doc = function() {
 
-    $("button.add-snip").click(function (event) {
+    $("button.add-section").click(function (event) {
         event.preventDefault();
 
         $.ajax({
-            url: "post/add-snip.php",
-            data: {snippets_id: this.value, tag : this.name, text: ''},
+            url: "post/add-section.php",
+            data: {doc_id: this.value, tag : this.name, text: ''},
             method: "POST",
             success: function (data) {
                 var json = parse_json(data);
@@ -22,11 +22,11 @@ export const Snippet = function() {
     });
 
     $("input.title").change(function (event) {
-       event.preventDefault();
+        event.preventDefault();
 
         $.ajax({
-            url: "post/update-snippet.php",
-            data: {snippets_id: this.id, title : this.value},
+            url: "post/update-doc.php",
+            data: {topic_id: this.id, title : this.value},
             method: "POST",
             success: function (data) {
                 var json = parse_json(data);
@@ -39,11 +39,11 @@ export const Snippet = function() {
         });
     });
 
-    $("textarea.snip").change(function (event) {
+    $("textarea.section").change(function (event) {
         event.preventDefault();
 
         $.ajax({
-            url: "post/update-snip.php",
+            url: "post/update-section.php",
             data: {id: this.id, text : this.value, class : this.name},
             method: "POST",
             success: function (data) {
@@ -57,12 +57,12 @@ export const Snippet = function() {
         });
     });
 
-    $("button.delete-snip").click(function (event) {
+    $("button.delete-section").click(function (event) {
         event.preventDefault();
 
-        if(confirm("Delete Snip?")) {
+        if(confirm("Delete Section?")) {
             $.ajax({
-                url: "post/delete-snip.php",
+                url: "post/delete-section.php",
                 data: {id: this.id},
                 method: "POST",
                 success: function (data) {
