@@ -66,7 +66,7 @@ class Snippets extends View {
 
     public function language() {
         $lang = $this->languages->getNameById($this->lang_id)["lang"];
-        return "<h2 class='lang-name'>".$lang."</h2>";
+        return "<h2 class='lang-name'><a href='./index.php?".$lang."'>".$lang."</a></h2>";
     }
 
     public function snippetTitle($mode) {
@@ -75,7 +75,7 @@ class Snippets extends View {
             return <<<HTML
 <div class="row-container">
     <div class="left-half">
-        <h3>$lang</h3>
+        $lang
     </div>
     <div class="right-half">
         <p class="done-edit"><a href="./snippet.php?lang_id=$this->lang_id&id=$this->snippet_id&mode=view">Finish Editing</a></p>
@@ -87,7 +87,7 @@ HTML;
         return <<<HTML
 <div class="row-container">
     <div class="left-half">
-        <h3>$lang</h3>
+        $lang
     </div>
     <div class="right-half">
         <p class="edit-snippet"><a href="./snippet.php?lang_id=$this->lang_id&id=$this->snippet_id&mode=edit">Edit Snippet</a></p>

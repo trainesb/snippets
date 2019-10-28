@@ -5,3 +5,23 @@ div.row-container div.right {
 div.row-container div.left {
   width: 15%;
 }
+
+div.row-container div.left-half {
+  width: 50%;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+div.row-container div.right-half {
+  width: 50%;
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+}
