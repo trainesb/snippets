@@ -53,7 +53,7 @@ HTML;
     }
 
     public function langLinks() {
-        $html = "<div><ul>";
+        $html = "<div><h3>Snippets</h3><ul>";
 
         foreach ($this->languages->getAll() as $lang) {
             $html .= "<li><a href='./?" . $lang['lang'] . "'>" . $lang['lang'] . "</a>";

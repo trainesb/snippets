@@ -51,7 +51,7 @@ HTML;
         $html = <<<HTML
 <nav>
     <ul class="left">
-        <li><a href="./">BT's Snippets</a></li>
+        <li><a href="./">BT's Black Book</a></li>
     </ul>
 HTML;
 

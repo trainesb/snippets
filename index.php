@@ -18,6 +18,8 @@ $view = new View\Home($site, $user);
     <div class="main">
         <?php echo $view->nav(); ?>
 
+
+
         <div class="home-header">
             <h1 class='center'><?php echo $view->getTitle(); ?></h1>
 
