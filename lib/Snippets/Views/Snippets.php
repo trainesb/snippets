@@ -17,6 +17,7 @@ class Snippets extends View {
     private $title;
     private $mode;
     private $lang_id;
+    private $languages;
 
     public function __construct($site) {
         $this->site = $site;
@@ -26,8 +27,20 @@ class Snippets extends View {
         $this->snippet_id = $id;
         $this->mode = $mode;
         $this->lang_id = $lang_id;
+        $this->languages = new Languages($site);
         $this->title = $this->snippets->getTitleBySnippetId($this->snippet_id);
         $this->setTitle($this->title);
+    }
+
+    public function langLinks() {
+        $html = "<div><ul>";
+
+        foreach ($this->languages->getAll() as $lang) {
+            $html .= "<li><a href='./?" . $lang['lang'] . "'>" . $lang['lang'] . "</a>";
+        }
+
+        $html .= "</ul></div>";
+        return $html;
     }
 
     public function toggleBtn() {
@@ -39,8 +52,7 @@ class Snippets extends View {
     }
 
     public function language() {
-        $languages = new Languages($this->site);
-        $lang = $languages->getNameById($this->lang_id)["lang"];
+        $lang = $this->languages->getNameById($this->lang_id)["lang"];
         return "<h2 class='lang-name'>".$lang."</h2>";
     }
 

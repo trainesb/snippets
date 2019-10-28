@@ -18,12 +18,14 @@ $view = new Snippets($site);
 <div class="snippet">
     <?php echo $view->nav(); ?>
 
-
-
-    <?php
-    echo $view->toggleBtn();
-    ?>
-
+    <div class="row-container">
+        <div class="left">
+            <?php echo $view->langLinks(); ?>
+        </div>
+        <div class="right">
+            <?php echo $view->toggleBtn(); ?>
+        </div>
+    </div>
 
     <?php echo $view->footer(); ?>
 </div>
