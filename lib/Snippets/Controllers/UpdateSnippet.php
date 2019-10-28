@@ -5,17 +5,16 @@ namespace Controller;
 
 
 use Snippets\Site;
-use Table\Languages;
+use Table\Snippets;
 
-class AddLanguage extends Controller {
+class UpdateSnippet extends Controller {
 
     public function __construct(Site $site, array $post) {
         parent::__construct($site);
 
-        $languages = new Languages($site);
-        if(!empty($post)) {
+        $snippets = new Snippets($site);
 
-            $languages->add($post['language']);
+        if($snippets->updateTitleById($post['title'], $post['snippets_id'])) {
             $this->result = json_encode(["ok" => true]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error"]);

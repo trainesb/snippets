@@ -18,7 +18,11 @@ $view = new View\Home($site, $user);
     <div class="main">
         <?php echo $view->nav(); ?>
 
-        <h1 class='center'><?php echo $view->getTitle(); ?></h1>
+        <div class="home-header">
+            <h1 class='center'><?php echo $view->getTitle(); ?></h1>
+
+            <?php echo $view->createSnippet(); ?>
+        </div>
 
         <div class="row-container">
             <div class="left">

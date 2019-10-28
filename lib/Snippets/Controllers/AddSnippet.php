@@ -14,9 +14,13 @@ class AddSnippet extends Controller {
 
         $snippets = new Snippets($site);
 
+
+
         if(!empty($post)) {
-            $snippets->add($post);
-            $this->result = json_encode(["ok" => true]);
+
+            $snippets->createSnippet($post['lang_id']);
+            $id = $snippets->getLastInsertedId()['MAX(id)'];
+            $this->result = json_encode(["ok" => true, "id" => $id]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error"]);
         }

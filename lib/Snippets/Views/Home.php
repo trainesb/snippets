@@ -15,6 +15,8 @@ class Home extends View {
     private $snips;
     private $query;
 
+    private $lang_id;
+
     public function __construct($site, $user) {
         $this->site = $site;
         $this->languages = new Languages($site);
@@ -28,6 +30,8 @@ class Home extends View {
             $this->setTitle("Home");
         }
 
+        $this->lang_id = $this->languages->getId($this->query)['id'];
+
         if ($user) {
             if ($user->isStaff()) {
                 $this->addLink("./staff.php", "Staff");
@@ -36,6 +40,16 @@ class Home extends View {
         } else {
             $this->addLink("login.php", "Log In");
         }
+    }
+
+    public function createSnippet() {
+        $lang_id = $this->lang_id;
+        if($lang_id) {
+            return <<<HTML
+<button class="create-snippet" name="$lang_id">Create Snippet</button>
+HTML;
+        }
+        return;
     }
 
     public function langLinks() {
@@ -50,7 +64,7 @@ class Home extends View {
     }
 
     public function snipCard() {
-        $lang_id = $this->languages->getId($this->query)['id'];
+        $lang_id = $this->lang_id;
         $snippets = $this->snippets->getById($lang_id);
 
         $html = '';
@@ -75,7 +89,14 @@ class Home extends View {
 
             $html .= <<<HTML
 <div class="snip-card">
-    <h3><a href="./snippet.php?lang_id=$lang_id&id=$id&mode=view">$title</a></h3>
+    <div class="row-container">
+        <div class="left-half">
+            <h3><a href="./snippet.php?lang_id=$lang_id&id=$id&mode=view">$title</a></h3>
+        </div>
+        <div class="right-half">
+            <button class="delete-snippet" name="$title" id="$id"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div>    
+    </div>
     $html_snapshot
 </div>
 HTML;

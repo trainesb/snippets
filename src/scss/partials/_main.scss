@@ -26,7 +26,37 @@ div.main {
   }
 
   div.row-container div.left {
-    width: 25%;
+    width: 15%;
+  }
+
+  div.row-container div.left-half {
+    width: 50%;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  div.row-container div.right-half {
+    width: 50%;
+    position: relative;
+
+    button {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+  }
+
+  div.home-header {
+    position: relative;
+
+    button.create-snippet {
+      position: absolute;
+      top: 0;
+      right: 7em;
+    }
   }
 }
 

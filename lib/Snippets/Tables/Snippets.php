@@ -13,12 +13,36 @@ class Snippets extends Table {
         $this->site = $site;
     }
 
-    public function add($snippet) {
+    public function createSnippet($lang_id) {
         try {
-            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, code, title, description) VALUES (?, ?, ?, ?)';
+            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$snippet['language'], base64_encode($snippet['snippet']), $snippet['title'], $snippet['description']]);
+            $statement->execute([$lang_id, "Title"]);
+            return true;
+        } catch(\PDOException $e) {
+            return false;
+        }
+    }
+
+    public function getLastInsertedId() {
+        try {
+            $sql = 'SELECT MAX(id) FROM '.$this->tableName;
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetch(\PDO::FETCH_ASSOC);
+        } catch(\PDOException $e) {
+            return false;
+        }
+    }
+
+    public function add($snippet) {
+        try {
+            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$snippet['language'], $snippet['title']]);
             return true;
         } catch(\PDOException $e) {
             return false;
@@ -46,6 +70,30 @@ class Snippets extends Table {
             return $statement->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             return null;
+        }
+    }
+
+    public function updateTitleById($title, $id) {
+        try {
+            $sql = 'UPDATE '.$this->getTableName().' SET title=? WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$title, $id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
+
+    public function deleteById($id) {
+        try {
+            $sql = 'DELETE FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
         }
     }
 }

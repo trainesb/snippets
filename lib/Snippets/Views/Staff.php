@@ -40,42 +40,6 @@ class Staff extends View {
 HTML;
     }
 
-    public function snippetForm() {
-        $html = <<<HTML
-<form id="add-snippet" method="post" action="post/add-snippet.php">
-    <fieldset>
-        <legend>Snippet</legend>
-        
-        <p><label for="language">Language</label></p>
-        <select id="language" name="language">
-HTML;
-
-        foreach ($this->languages as $lang) {
-            $html .= "<option value='".$lang['id']."'>".$lang['lang']."</option>";
-        }
-
-        $html .= <<<HTML
-        </select>
-        
-        <p><label for="title">Title</label></p>
-        <input type="text" id="title" name="title" placeholder="Title">
-
-        <p><label for="snippet">Snippet</label></p>
-        <textarea type="text" id="snippet" name="snippet" cols="50" rows="7" placeholder="Snippet"></textarea>
-
-        <p><label for="description">Description</label></p>
-        <textarea type="text" id="description" name="description" cols="50" rows="7" placeholder="description"></textarea>
-
-        <p><input type="submit" value="Add Snippet"></p>
-
-    </fieldset>
-    
-    <div class="message"></div>
-</form>
-HTML;
-        return $html;
-    }
-
     public function languagesTable() {
         $html = <<<HTML
 <form class="table">

@@ -36,4 +36,16 @@ class Languages extends Table {
             return null;
         }
     }
+
+    public function getNameById($id) {
+        try {
+            $sql = 'SELECT lang FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return $statement->fetch(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
 }
