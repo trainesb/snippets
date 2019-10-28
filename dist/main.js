@@ -11304,22 +11304,45 @@ const Snippet = function() {
 
        });
 
-       console.log(data);
+       var url = new URL(window.location.href);
+       var snippet_id = url.searchParams.get('id');
+       var lang_id = url.searchParams.get('lang_id');
+
 
 
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
             url: "post/snippet.php",
-            data: {title: title, data: data},
+            data: {title: title, snippet_id: snippet_id, data: data},
             method: "POST",
             success: function(data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
                 if(!json.ok) {
                     alert(json.message);
+                } else {
+                    window.location.assign('./snippet.php?lang_id='+lang_id+'&id='+snippet_id+'&mode=view');
                 }
             },
             error: function(xhr, status, error) {
                 alert("Error: " + error);
+            }
+        });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.delSnip").click(function (event) {
+        event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/delete-snip.php",
+            data: {id: this.id},
+            method: "POST",
+            success: function (data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
             }
         });
     });

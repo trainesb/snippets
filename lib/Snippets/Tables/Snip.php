@@ -42,4 +42,28 @@ class Snip extends Table {
             return null;
         }
     }
+
+    public function updateTextById($text, $id) {
+        try {
+            $sql = 'UPDATE '.$this->getTableName().' SET text=? WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$text, $id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
+
+    public function deleteSnipById($id) {
+        try {
+            $sql = 'DELETE FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
 }

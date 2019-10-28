@@ -50,22 +50,45 @@ export const Snippet = function() {
 
        });
 
-       console.log(data);
+       var url = new URL(window.location.href);
+       var snippet_id = url.searchParams.get('id');
+       var lang_id = url.searchParams.get('lang_id');
+
 
 
 
         $.ajax({
             url: "post/snippet.php",
-            data: {title: title, data: data},
+            data: {title: title, snippet_id: snippet_id, data: data},
             method: "POST",
             success: function(data) {
                 var json = parse_json(data);
                 if(!json.ok) {
                     alert(json.message);
+                } else {
+                    window.location.assign('./snippet.php?lang_id='+lang_id+'&id='+snippet_id+'&mode=view');
                 }
             },
             error: function(xhr, status, error) {
                 alert("Error: " + error);
+            }
+        });
+    });
+
+    $("button.delSnip").click(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "post/delete-snip.php",
+            data: {id: this.id},
+            method: "POST",
+            success: function (data) {
+                var json = parse_json(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
             }
         });
     });

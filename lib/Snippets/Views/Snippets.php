@@ -81,10 +81,10 @@ class Snippets extends View {
 
                 $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
                 $code = str_replace("&amp;hellip;", "&hellip;", $code);
-                $html .= '<div class="code"><pre id="'.$snip_id.'"><code contenteditable="true">'.$code.'</code></pre></div>';
+                $html .= '<div class="code"><pre id="'.$snip_id.'"><code contenteditable="true">'.$code.'</code></pre></div><button class="delSnip" id="'.$snip_id.'">Delete Snippet</button>';
 
             } else {
-                $html .= '<div class="description" contenteditable="true"><p id="'.$snip_id.'">'.$text.'</p></div>';
+                $html .= '<div class="description" contenteditable="true"><p id="'.$snip_id.'">'.$text.'</p></div><button class="delSnip" id="'.$snip_id.'">Delete Snippet</button>';
             }
         }
 

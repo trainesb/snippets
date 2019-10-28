@@ -48,4 +48,16 @@ class Snippets extends Table {
             return null;
         }
     }
+
+    public function updateTitleById($title, $id) {
+        try {
+            $sql = 'UPDATE '.$this->getTableName().' SET title=? WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$title, $id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
 }
