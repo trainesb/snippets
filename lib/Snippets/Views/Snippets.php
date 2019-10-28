@@ -45,20 +45,34 @@ class Snippets extends View {
     }
 
     public function snippetCard() {
-        $btn = '<div class="container"><p class="edit-snippet"><a href="./snippet.php?lang_id='.$this->lang_id.'&id='.$this->snippet_id.'&mode=edit">Edit Snippet</a></p>';
-        $title = '<h1 class="center snippet-title">'.$this->title.'</h1>';
-        $html = '';
-        $html_snapshot = '';
+        $lang = $this->language();
         $snips = $this->snips->getBySnippetId($this->snippet_id);
 
+        $title = <<<HTML
+<div class="row-container">
+    <div class="left-half">
+        <h3>$lang</h3>
+    </div>
+    <div class="right-half">
+        <p class="edit-snippet"><a href="./snippet.php?lang_id=$this->lang_id&id=$this->snippet_id&mode=edit">Edit Snippet</a></p>
+    </div>
+</div>
+<h1 class="center snippet-title">$this->title</h1>
+HTML;
+
+        $html_snapshot = true;
+        $snapshot = '';
+        $html = '';
         foreach ($snips as $snip) {
             $snip_id = $snip['id'];
             $text = $snip['text'];
             $tag = $snip['tag'];
             if($tag === 'pre') {
                 $text = base64_decode($text);
-                $html_snapshot = '<pre id="'.$snip_id.'"><code>'.$text.'</code></pre>';
-
+                if($html_snapshot) {
+                    $snapshot = '<pre id="' . $snip_id . '"><code>' . $text . '</code></pre>';
+                    $html_snapshot = false;
+                }
                 $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
                 $code = str_replace("&amp;hellip;", "&hellip;", $code);
                 $html .= '<pre id="'.$snip_id.'"><code>'.$code.'</code></pre>';
@@ -68,7 +82,7 @@ class Snippets extends View {
             }
         }
 
-        return $btn . $title . $html_snapshot . $html . "</div>";
+        return $title . $snapshot . $html;
     }
 
     public function editSnippet() {
@@ -76,7 +90,7 @@ class Snippets extends View {
         $lang = $this->language();
         $snips = $this->snips->getBySnippetId($this->snippet_id);
 
-        $html = <<<HTML
+        $title = <<<HTML
 <div class="row-container">
     <div class="left-half">
         <h3>$lang</h3>
@@ -91,6 +105,8 @@ class Snippets extends View {
 HTML;
 
         $html_snapshot = true;
+        $snapshot = '';
+        $html = '';
         foreach ($snips as $snip) {
             $snip_id = $snip['id'];
             $text = $snip['text'];
@@ -98,7 +114,7 @@ HTML;
             if($tag === 'pre') {
                 $text = base64_decode($text);
                 if($html_snapshot) {
-                    $html .= '<pre id="' . $snip_id . '"><code>' . $text . '</code></pre>';
+                    $snapshot = '<pre id="' . $snip_id . '"><code>' . $text . '</code></pre>';
                     $html_snapshot = false;
                 }
                 $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
@@ -117,7 +133,7 @@ HTML;
     <button value="$this->snippet_id" name="pre" class="add-snip">Add Code Snippet</button>
 </form>
 HTML;
-        return $html;
+        return $title . $snapshot . $html;
     }
 
 }
