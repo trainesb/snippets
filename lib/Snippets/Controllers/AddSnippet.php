@@ -15,8 +15,9 @@ class AddSnippet extends Controller {
         $snippets = new Snippets($site);
 
         if(!empty($post)) {
-            $snippets->add($post);
-            $this->result = json_encode(["ok" => true]);
+            $id = $snippets->add($post);
+            var_dump($id);
+            $this->result = json_encode(["ok" => true, "lang_id" => $post["language"], "snip_id" => $id]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error"]);
         }

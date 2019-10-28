@@ -60,12 +60,6 @@ HTML;
         <p><label for="title">Title</label></p>
         <input type="text" id="title" name="title" placeholder="Title">
 
-        <p><label for="snippet">Snippet</label></p>
-        <textarea type="text" id="snippet" name="snippet" cols="50" rows="7" placeholder="Snippet"></textarea>
-
-        <p><label for="description">Description</label></p>
-        <textarea type="text" id="description" name="description" cols="50" rows="7" placeholder="description"></textarea>
-
         <p><input type="submit" value="Add Snippet"></p>
 
     </fieldset>

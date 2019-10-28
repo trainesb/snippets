@@ -14,6 +14,7 @@ class AddLanguage extends Controller {
 
         $languages = new Languages($site);
         if(!empty($post)) {
+
             $languages->add($post['language']);
             $this->result = json_encode(["ok" => true]);
         } else {

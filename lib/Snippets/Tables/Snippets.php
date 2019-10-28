@@ -15,10 +15,10 @@ class Snippets extends Table {
 
     public function add($snippet) {
         try {
-            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, code, title, description) VALUES (?, ?, ?, ?)';
+            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$snippet['language'], base64_encode($snippet['snippet']), $snippet['title'], $snippet['description']]);
+            $statement->execute([$snippet['language'], $snippet['title']]);
             return true;
         } catch(\PDOException $e) {
             return false;

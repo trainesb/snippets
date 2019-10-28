@@ -15,6 +15,7 @@ export const AddSnippet = function() {
                 if(json.ok) {
                     alert("New Snippet Added!");
                     window.location.reload();
+                    //window.location.assign('./snippet.php?lang_id='+json.lang_id+'&id='+json.snip_id+"&mode=edit");
                 } else {
                     alert(json.message);
                 }
