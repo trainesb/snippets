@@ -66,4 +66,16 @@ class Snip extends Table {
             return false;
         }
     }
+
+    public function deleteBySnippetId($snippet_id) {
+        try {
+            $sql = 'DELETE FROM '.$this->getTableName().' WHERE snippets_id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$snippet_id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
 }

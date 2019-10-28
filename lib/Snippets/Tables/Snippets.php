@@ -60,4 +60,16 @@ class Snippets extends Table {
             return false;
         }
     }
+
+    public function deleteById($id) {
+        try {
+            $sql = 'DELETE FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
 }

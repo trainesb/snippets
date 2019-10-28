@@ -75,7 +75,14 @@ class Home extends View {
 
             $html .= <<<HTML
 <div class="snip-card">
-    <h3><a href="./snippet.php?lang_id=$lang_id&id=$id&mode=view">$title</a></h3>
+    <div class="row-container">
+        <div class="left-half">
+            <h3><a href="./snippet.php?lang_id=$lang_id&id=$id&mode=view">$title</a></h3>
+        </div>
+        <div class="right-half">
+            <button class="delete-snippet" name="$title" id="$id"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div>    
+    </div>
     $html_snapshot
 </div>
 HTML;
