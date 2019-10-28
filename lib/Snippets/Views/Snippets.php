@@ -19,7 +19,7 @@ class Snippets extends View {
     private $lang_id;
     private $languages;
 
-    public function __construct($site) {
+    public function __construct($site, $user) {
         $this->site = $site;
         $this->snips = new Snip($site);
         $this->snippets = new \Table\Snippets($site);
@@ -30,6 +30,15 @@ class Snippets extends View {
         $this->languages = new Languages($site);
         $this->title = $this->snippets->getTitleBySnippetId($this->snippet_id);
         $this->setTitle($this->title);
+
+        if ($user) {
+            if ($user->isStaff()) {
+                $this->addLink("./staff.php", "Staff");
+            }
+            $this->addLink("./logout,php", "Log Out");
+        } else {
+            $this->addLink("login.php", "Log In");
+        }
     }
 
     public function langLinks() {
@@ -41,6 +50,10 @@ class Snippets extends View {
 
         $html .= "</ul></div>";
         return $html;
+    }
+
+    public function getMode() {
+        return $this->mode;
     }
 
     public function toggleBtn() {
@@ -56,11 +69,22 @@ class Snippets extends View {
         return "<h2 class='lang-name'>".$lang."</h2>";
     }
 
-    public function snippetCard() {
+    public function snippetTitle($mode) {
         $lang = $this->language();
-        $snips = $this->snips->getBySnippetId($this->snippet_id);
+        if($mode == 'edit') {
+            return <<<HTML
+<div class="row-container">
+    <div class="left-half">
+        <h3>$lang</h3>
+    </div>
+    <div class="right-half">
+        <p class="done-edit"><a href="./snippet.php?lang_id=$this->lang_id&id=$this->snippet_id&mode=view">Finish Editing</a></p>
+    </div>
+</div>
 
-        $title = <<<HTML
+HTML;
+        }
+        return <<<HTML
 <div class="row-container">
     <div class="left-half">
         <h3>$lang</h3>
@@ -71,6 +95,13 @@ class Snippets extends View {
 </div>
 <h1 class="center snippet-title">$this->title</h1>
 HTML;
+    }
+
+    public function snippetCard() {
+
+        $snips = $this->snips->getBySnippetId($this->snippet_id);
+
+
 
         $html_snapshot = true;
         $snapshot = '';
@@ -94,24 +125,13 @@ HTML;
             }
         }
 
-        return $title . $snapshot . $html;
+        return $snapshot . $html;
     }
 
     public function editSnippet() {
-
-        $lang = $this->language();
         $snips = $this->snips->getBySnippetId($this->snippet_id);
 
         $title = <<<HTML
-<div class="row-container">
-    <div class="left-half">
-        <h3>$lang</h3>
-    </div>
-    <div class="right-half">
-        <p class="done-edit"><a href="./snippet.php?lang_id=$this->lang_id&id=$this->snippet_id&mode=view">Finish Editing</a></p>
-    </div>
-</div>
-
 <form class="edit-snippet" id="edit-snippet">
     <p><input type="text" id="$this->snippet_id" class="title" name="title" value="$this->title"></p>
 HTML;

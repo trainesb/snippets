@@ -4,7 +4,7 @@ use View\Snippets;
 
 $open = true;
 require 'lib/site.inc.php';
-$view = new Snippets($site);
+$view = new Snippets($site, $user);
 ?>
 
 
@@ -16,7 +16,11 @@ $view = new Snippets($site);
 
 <body>
 <div class="snippet">
-    <?php echo $view->nav(); ?>
+    <?php
+    echo $view->nav();
+    echo $view->snippetTitle($view->getMode());
+
+    ?>
 
     <div class="row-container">
         <div class="left">
