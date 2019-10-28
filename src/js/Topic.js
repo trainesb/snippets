@@ -1,20 +1,22 @@
 import $ from 'jquery';
 import {parse_json} from './parse_json';
 
-export const AddLanguage = function() {
+export const Topic = function() {
 
-    $("#add-language").submit(function (event) {
+    $("button.create-doc").click(function (event) {
         event.preventDefault();
 
+        var topic_id = this.name;
+        var topic = this.value;
+
         $.ajax({
-            url: "post/add-language.php",
-            data: $(this).serialize(),
+            url: "post/add-doc.php",
+            data: {topic_id : topic_id},
             method: "POST",
             success: function(data) {
                 var json = parse_json(data);
                 if(json.ok) {
-                    alert("New Language Added!");
-                    window.location.reload();
+                    window.location.assign('./doc.php?topic='+topic+'&id='+json.doc_id+"&mode=edit");
                 } else {
                     alert(json.message);
                 }

@@ -1,6 +1,6 @@
 <?php
 require 'lib/site.inc.php';
-$view = new View\Staff($site);
+$view = new View\Admin($site);
 ?>
 
 <!DOCTYPE html>
@@ -10,11 +10,17 @@ $view = new View\Staff($site);
 </head>
 
 <body>
-<div class="staff">
+<div class="admin">
     <?php echo $view->nav(); ?>
-    <h1 class='center'>Staff</h1>
+    <h1 class='center'>Admin</h1>
 
     <?php
+    echo $view->newCatForm();
+    echo $view->CategoriesTable();
+
+    echo $view->newTopicForm();
+    echo $view->TopicsTable();
+
     echo $view->footer();
     ?>
 </body>

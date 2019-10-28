@@ -5,24 +5,17 @@ namespace Controller;
 
 
 use Snippets\Site;
-use Table\Snip;
+use Table\Categories;
 
-class UpdateSnip extends Controller {
+class AddCategory extends Controller {
 
     public function __construct(Site $site, array $post) {
         parent::__construct($site);
-
-        $snips = new Snip($site);
-        $text = $post['text'];
-        if($post['class'] == "code") {
-            $text = base64_encode($text);
-        }
-
-        if($snips->updateTextById($text, $post['id'])) {
+        $categories = new Categories($site);
+        if($categories->add($post['category'])) {
             $this->result = json_encode(["ok" => true]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error"]);
         }
     }
 }
-

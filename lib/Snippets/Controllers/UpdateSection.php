@@ -5,19 +5,21 @@ namespace Controller;
 
 
 use Snippets\Site;
-use Table\Snip;
+use Table\Sections;
 
-class AddSnip extends Controller {
+class UpdateSection extends Controller {
 
     public function __construct(Site $site, array $post) {
         parent::__construct($site);
 
-        $snips = new Snip($site);
+        $sections = new Sections($site);
 
+        $text = $post['text'];
+        if($post['class'] == "code") {
+            $text = base64_encode($text);
+        }
 
-
-        if(!empty($post)) {
-            $snips->add($post);
+        if($sections->updateTextById($text, $post['id'])) {
             $this->result = json_encode(["ok" => true]);
         } else {
             $this->result = json_encode(["ok" => false, "message" => "Error"]);

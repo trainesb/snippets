@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\n  background-color: #bbb;\n  color: black; }\n\nh1, h2 {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n\nbody > div {\n  background-color: white;\n  max-width: 60em;\n  min-width: 40em;\n  margin: 0 auto; }\n\np {\n  margin: 1em 2em; }\n\np.date {\n  float: right; }\n\na:visited, a:link {\n  color: #88f; }\n\n.center {\n  text-align: center; }\n\nform {\n  width: 22em;\n  margin: 1em auto; }\n  form p {\n    margin: 0.5em 0; }\n  form input[type=\"password\"], form input[type=\"email\"] {\n    width: 20em; }\n  form textarea {\n    width: 100%;\n    height: 6em; }\n  form a {\n    padding-left: 0.5em;\n    font-size: 0.85em; }\n  form p.msg {\n    text-align: center;\n    color: red;\n    font-size: 0.9em;\n    font-style: italic; }\n\nform.table p {\n  text-align: center; }\n\nform.table input[type=\"submit\"] {\n  margin: 0 1em; }\n\nnav {\n  position: relative;\n  background-color: #18453B;\n  color: white;\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n  nav ul {\n    font-size: 1.2em;\n    list-style: none;\n    margin: 0;\n    padding: 0; }\n    nav ul li {\n      display: inline-block; }\n    nav ul li a {\n      display: block;\n      padding: 0.5em 0.5em; }\n    nav ul a:hover {\n      background-color: green; }\n    nav ul a:visited, nav ul a:link {\n      color: white;\n      text-decoration: none; }\n  nav ul.right {\n    position: absolute;\n    right: 0;\n    top: 0; }\n\ndiv.row-container {\n  display: flex; }\n  div.row-container div.sideNav {\n    background-color: #18453B;\n    width: 21%; }\n    div.row-container div.sideNav p {\n      margin: 0; }\n      div.row-container div.sideNav p a {\n        padding: 0.5em;\n        text-decoration: none;\n        font-size: 1.2em;\n        color: #ffffff;\n        display: block; }\n      div.row-container div.sideNav p a:hover {\n        background-color: green; }\n    div.row-container div.sideNav ul.sub {\n      padding-inline-start: 1em;\n      margin: 0; }\n      div.row-container div.sideNav ul.sub li {\n        list-style: none; }\n        div.row-container div.sideNav ul.sub li a {\n          text-decoration: none;\n          color: #ffffff; }\n        div.row-container div.sideNav ul.sub li a:hover {\n          background-color: green; }\n  div.row-container div.col-main {\n    width: 85%;\n    background-color: white; }\n\nheader {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\n  padding: 1em 0; }\n  header h1 {\n    font-size: 3em;\n    text-align: center; }\n    header h1 img {\n      width: 2.12em;\n      height: 2em;\n      vertical-align: middle; }\n  header p {\n    font-size: 1.2em;\n    margin: 1em 5em;\n    text-align: center;\n    position: relative; }\n\nfooter {\n  background-color: #18453B;\n  color: white;\n  text-align: center; }\n  footer p {\n    padding: 0.25em 0;\n    margin-top: 0; }\n\ndiv.staff h3 {\n  text-align: center; }\n\ndiv.staff div.row-container div {\n  width: 50%; }\n\ndiv.staff div.menu {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\n  font-size: 2em; }\n  div.staff div.menu p {\n    text-align: center;\n    margin: 1em 0; }\n  div.staff div.menu img {\n    vertical-align: middle;\n    height: 100px;\n    width: auto; }\n\ndiv.staff div.header {\n  margin-left: 15em; }\n\ndiv.staff div.staff-btns {\n  text-align: center; }\n  div.staff div.staff-btns p {\n    display: inline; }\n    div.staff div.staff-btns p a {\n      text-decoration: none;\n      color: #000000; }\n    div.staff div.staff-btns p a:hover {\n      text-decoration: underline;\n      color: #18453B; }\n\ndiv.main header a {\n  padding: 0.5em;\n  background-color: #4c4;\n  text-decoration: none;\n  color: white;\n  transition: all 0.1s;\n  -webkit-transition: all 0.1s;\n  position: relative;\n  padding: 0.5em 2em;\n  border-radius: 0.4em;\n  border-bottom: 5px solid #262;\n  text-shadow: 0px 2px #262; }\n\ndiv.main div.row-container div.right {\n  width: 75%; }\n\ndiv.main div.row-container div.left {\n  width: 15%; }\n\ndiv.main div.row-container div.left-half {\n  width: 50%; }\n  div.main div.row-container div.left-half h3 {\n    margin: 0; }\n\ndiv.main div.row-container div.right-half {\n  width: 50%;\n  position: relative; }\n  div.main div.row-container div.right-half button {\n    position: absolute;\n    right: 0;\n    bottom: 0; }\n\ndiv.main div.home-header {\n  position: relative; }\n  div.main div.home-header button.create-snippet {\n    position: absolute;\n    top: 0;\n    right: 7em; }\n\ntable {\n  margin-left: auto;\n  margin-right: auto;\n  -moz-box-shadow: 6pt 6px 10pt #888;\n  -webkit-box-shadow: 6pt 6px 10pt #888;\n  box-shadow: 6pt 6px 10pt #888;\n  border-left: 1px solid #e0e0e0;\n  border-collapse: collapse; }\n\ntable th {\n  color: white;\n  background-color: #18453B;\n  background: -webkit-gradient(linear, left top, left bottom, from(#18453B), to(#73d189));\n  background: -webkit-linear-gradient(top, #18453B, #73d189);\n  background: -moz-linear-gradient(top, #18453B, #73d189);\n  background: -ms-linear-gradient(top, #18453B, #73d189);\n  background: -o-linear-gradient(top, #18453B, #73d189);\n  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  border-top: 1px solid #C1DAD7;\n  text-align: left;\n  font-family: Helvetica, Arial, Sans-Serif;\n  text-decoration: none;\n  padding: 0.1em 0.5em; }\n\ntable td {\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  background: white;\n  padding: 0.1em 0.5em;\n  color: #4f6b72; }\n\nth a:link {\n  color: #F5F3EB; }\n\nth a:visited {\n  color: #E3DCC5; }\n\nth a:hover {\n  color: #ffffff; }\n\npre code {\n  background-color: #eee;\n  border: 1px solid #999;\n  display: block;\n  padding: 20px; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #bbb;\n  color: black; }\n\nh1, h2 {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n\nbody > div {\n  background-color: white;\n  max-width: 60em;\n  min-width: 40em;\n  margin: 0 auto; }\n\np {\n  margin: 1em 2em; }\n\np.date {\n  float: right; }\n\na:visited, a:link {\n  color: #88f; }\n\n.center {\n  text-align: center; }\n\nform {\n  width: 22em;\n  margin: 1em auto; }\n  form p {\n    margin: 0.5em 0; }\n  form input[type=\"password\"], form input[type=\"email\"] {\n    width: 20em; }\n  form textarea {\n    width: 100%;\n    height: 6em; }\n  form a {\n    padding-left: 0.5em;\n    font-size: 0.85em; }\n  form p.msg {\n    text-align: center;\n    color: red;\n    font-size: 0.9em;\n    font-style: italic; }\n\nform.table p {\n  text-align: center; }\n\nform.table input[type=\"submit\"] {\n  margin: 0 1em; }\n\nnav {\n  position: relative;\n  background-color: #18453B;\n  color: white;\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n  nav ul {\n    font-size: 1.2em;\n    list-style: none;\n    margin: 0;\n    padding: 0; }\n    nav ul li {\n      display: inline-block; }\n    nav ul li a {\n      display: block;\n      padding: 0.5em 0.5em; }\n    nav ul a:hover {\n      background-color: green; }\n    nav ul a:visited, nav ul a:link {\n      color: white;\n      text-decoration: none; }\n  nav ul.right {\n    position: absolute;\n    right: 0;\n    top: 0; }\n\ndiv.row-container {\n  display: flex; }\n  div.row-container div.sideNav {\n    background-color: #18453B;\n    width: 21%; }\n    div.row-container div.sideNav p {\n      margin: 0; }\n      div.row-container div.sideNav p a {\n        padding: 0.5em;\n        text-decoration: none;\n        font-size: 1.2em;\n        color: #ffffff;\n        display: block; }\n      div.row-container div.sideNav p a:hover {\n        background-color: green; }\n    div.row-container div.sideNav ul.sub {\n      padding-inline-start: 1em;\n      margin: 0; }\n      div.row-container div.sideNav ul.sub li {\n        list-style: none; }\n        div.row-container div.sideNav ul.sub li a {\n          text-decoration: none;\n          color: #ffffff; }\n        div.row-container div.sideNav ul.sub li a:hover {\n          background-color: green; }\n  div.row-container div.col-main {\n    width: 85%;\n    background-color: white; }\n\nheader {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\n  padding: 1em 0; }\n  header h1 {\n    font-size: 3em;\n    text-align: center; }\n    header h1 img {\n      width: 2.12em;\n      height: 2em;\n      vertical-align: middle; }\n  header p {\n    font-size: 1.2em;\n    margin: 1em 5em;\n    text-align: center;\n    position: relative; }\n\nfooter {\n  background-color: #18453B;\n  color: white;\n  text-align: center; }\n  footer p {\n    padding: 0.25em 0;\n    margin-top: 0; }\n\ndiv.staff h3 {\n  text-align: center; }\n\ndiv.staff div.row-container div {\n  width: 50%; }\n\ndiv.staff div.menu {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\n  font-size: 2em; }\n  div.staff div.menu p {\n    text-align: center;\n    margin: 1em 0; }\n  div.staff div.menu img {\n    vertical-align: middle;\n    height: 100px;\n    width: auto; }\n\ndiv.staff div.header {\n  margin-left: 15em; }\n\ndiv.staff div.staff-btns {\n  text-align: center; }\n  div.staff div.staff-btns p {\n    display: inline; }\n    div.staff div.staff-btns p a {\n      text-decoration: none;\n      color: #000000; }\n    div.staff div.staff-btns p a:hover {\n      text-decoration: underline;\n      color: #18453B; }\n\ndiv.main header a {\n  padding: 0.5em;\n  background-color: #4c4;\n  text-decoration: none;\n  color: white;\n  transition: all 0.1s;\n  -webkit-transition: all 0.1s;\n  position: relative;\n  padding: 0.5em 2em;\n  border-radius: 0.4em;\n  border-bottom: 5px solid #262;\n  text-shadow: 0px 2px #262; }\n\ndiv.main div.row-container div.right {\n  width: 75%; }\n\ndiv.main div.row-container div.left {\n  width: 15%; }\n\ndiv.main div.row-container div.left-half {\n  width: 50%; }\n  div.main div.row-container div.left-half h3 {\n    margin: 0; }\n\ndiv.main div.row-container div.right-half {\n  width: 50%;\n  position: relative; }\n  div.main div.row-container div.right-half button {\n    position: absolute;\n    right: 0;\n    bottom: 0; }\n\ndiv.main div.home-header {\n  position: relative; }\n  div.main div.home-header button.create-snippet {\n    position: absolute;\n    top: 0;\n    right: 7em; }\n\ntable {\n  margin-left: auto;\n  margin-right: auto;\n  -moz-box-shadow: 6pt 6px 10pt #888;\n  -webkit-box-shadow: 6pt 6px 10pt #888;\n  box-shadow: 6pt 6px 10pt #888;\n  border-left: 1px solid #e0e0e0;\n  border-collapse: collapse; }\n\ntable th {\n  color: white;\n  background-color: #18453B;\n  background: -webkit-gradient(linear, left top, left bottom, from(#18453B), to(#73d189));\n  background: -webkit-linear-gradient(top, #18453B, #73d189);\n  background: -moz-linear-gradient(top, #18453B, #73d189);\n  background: -ms-linear-gradient(top, #18453B, #73d189);\n  background: -o-linear-gradient(top, #18453B, #73d189);\n  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  border-top: 1px solid #C1DAD7;\n  text-align: left;\n  font-family: Helvetica, Arial, Sans-Serif;\n  text-decoration: none;\n  padding: 0.1em 0.5em; }\n\ntable td {\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  background: white;\n  padding: 0.1em 0.5em;\n  color: #4f6b72; }\n\nth a:link {\n  color: #F5F3EB; }\n\nth a:visited {\n  color: #E3DCC5; }\n\nth a:hover {\n  color: #ffffff; }\n\npre code {\n  background-color: #eee;\n  border: 1px solid #999;\n  display: block;\n  padding: 20px; }\n\ndiv.topic-head {\n  position: relative; }\n  div.topic-head button.create-doc {\n    position: absolute;\n    right: 7em;\n    top: 0; }\n", ""]);
 
 
 /***/ }),
@@ -11104,35 +11104,34 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./src/js/AddLanguage.js":
-/*!*******************************!*\
-  !*** ./src/js/AddLanguage.js ***!
-  \*******************************/
-/*! exports provided: AddLanguage */
+/***/ "./src/js/Admin.js":
+/*!*************************!*\
+  !*** ./src/js/Admin.js ***!
+  \*************************/
+/*! exports provided: Admin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddLanguage", function() { return AddLanguage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Admin", function() { return Admin; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _parse_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse_json */ "./src/js/parse_json.js");
 
 
 
-const AddLanguage = function() {
+const Admin = function() {
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#add-language").submit(function (event) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("form#add-category").submit(function (event) {
         event.preventDefault();
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/add-language.php",
+            url: "post/add-category.php",
             data: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).serialize(),
             method: "POST",
             success: function(data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
                 if(json.ok) {
-                    alert("New Language Added!");
                     window.location.reload();
                 } else {
                     alert(json.message);
@@ -11142,6 +11141,123 @@ const AddLanguage = function() {
                 alert("Error: " + error);
             }
         });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("form#add-topic").submit(function (event) {
+        event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/add-topic.php",
+            data: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).serialize(),
+            method: "POST",
+            success: function(data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(json.ok) {
+                    window.location.reload();
+                } else {
+                    alert(json.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Error: " + error);
+            }
+        });
+    });
+};
+
+
+/***/ }),
+
+/***/ "./src/js/Doc.js":
+/*!***********************!*\
+  !*** ./src/js/Doc.js ***!
+  \***********************/
+/*! exports provided: Doc */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Doc", function() { return Doc; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _parse_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse_json */ "./src/js/parse_json.js");
+
+
+
+const Doc = function() {
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-section").click(function (event) {
+        event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/add-section.php",
+            data: {doc_id: this.value, tag : this.name, text: ''},
+            method: "POST",
+            success: function (data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("input.title").change(function (event) {
+        event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/update-doc.php",
+            data: {topic_id: this.id, title : this.value},
+            method: "POST",
+            success: function (data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("textarea.section").change(function (event) {
+        event.preventDefault();
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            url: "post/update-section.php",
+            data: {id: this.id, text : this.value, class : this.name},
+            method: "POST",
+            success: function (data) {
+                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                if(!json.ok) {
+                    alert(json.message);
+                } else {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.delete-section").click(function (event) {
+        event.preventDefault();
+
+        if(confirm("Delete Section?")) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+                url: "post/delete-section.php",
+                data: {id: this.id},
+                method: "POST",
+                success: function (data) {
+                    var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
+                    if (!json.ok) {
+                        alert(json.message);
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
     });
 };
 
@@ -11268,96 +11384,46 @@ const Login = function() {
 
 /***/ }),
 
-/***/ "./src/js/Snippets.js":
-/*!****************************!*\
-  !*** ./src/js/Snippets.js ***!
-  \****************************/
-/*! exports provided: Snippet */
+/***/ "./src/js/Topic.js":
+/*!*************************!*\
+  !*** ./src/js/Topic.js ***!
+  \*************************/
+/*! exports provided: Topic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Snippet", function() { return Snippet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Topic", function() { return Topic; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _parse_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse_json */ "./src/js/parse_json.js");
 
 
 
-const Snippet = function() {
+const Topic = function() {
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.add-snip").click(function (event) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.create-doc").click(function (event) {
         event.preventDefault();
 
-        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/add-snip.php",
-            data: {snippets_id: this.value, tag : this.name, text: ''},
-            method: "POST",
-            success: function (data) {
-                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                if(!json.ok) {
-                    alert(json.message);
-                } else {
-                    window.location.reload();
-                }
-            }
-        });
-    });
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("input.title").change(function (event) {
-       event.preventDefault();
+        var topic_id = this.name;
+        var topic = this.value;
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/update-snippet.php",
-            data: {snippets_id: this.id, title : this.value},
+            url: "post/add-doc.php",
+            data: {topic_id : topic_id},
             method: "POST",
-            success: function (data) {
+            success: function(data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                if(!json.ok) {
-                    alert(json.message);
+                if(json.ok) {
+                    window.location.assign('./doc.php?topic='+topic+'&id='+json.doc_id+"&mode=edit");
                 } else {
-                    window.location.reload();
+                    alert(json.message);
                 }
+            },
+            error: function(xhr, status, error) {
+                alert("Error: " + error);
             }
         });
-    });
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("textarea.snip").change(function (event) {
-        event.preventDefault();
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            url: "post/update-snip.php",
-            data: {id: this.id, text : this.value, class : this.name},
-            method: "POST",
-            success: function (data) {
-                var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                if(!json.ok) {
-                    alert(json.message);
-                } else {
-                    window.location.reload();
-                }
-            }
-        });
-    });
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("button.delete-snip").click(function (event) {
-        event.preventDefault();
-
-        if(confirm("Delete Snip?")) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-                url: "post/delete-snip.php",
-                data: {id: this.id},
-                method: "POST",
-                success: function (data) {
-                    var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                    if (!json.ok) {
-                        alert(json.message);
-                    } else {
-                        window.location.reload();
-                    }
-                }
-            });
-        }
     });
 };
 
@@ -11376,11 +11442,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login */ "./src/js/Login.js");
-/* harmony import */ var _AddLanguage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddLanguage */ "./src/js/AddLanguage.js");
-/* harmony import */ var _Snippets__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Snippets */ "./src/js/Snippets.js");
-/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Home */ "./src/js/Home.js");
-/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../scss/app.scss */ "./src/scss/app.scss");
-/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scss_app_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./src/js/Home.js");
+/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Admin */ "./src/js/Admin.js");
+/* harmony import */ var _Topic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Topic */ "./src/js/Topic.js");
+/* harmony import */ var _Doc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Doc */ "./src/js/Doc.js");
+/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../scss/app.scss */ "./src/scss/app.scss");
+/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scss_app_scss__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -11392,9 +11460,10 @@ __webpack_require__.r(__webpack_exports__);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     new _Login__WEBPACK_IMPORTED_MODULE_1__["Login"]();
-    new _Home__WEBPACK_IMPORTED_MODULE_4__["Home"]();
-    new _Snippets__WEBPACK_IMPORTED_MODULE_3__["Snippet"]();
-    new _AddLanguage__WEBPACK_IMPORTED_MODULE_2__["AddLanguage"]();
+    new _Doc__WEBPACK_IMPORTED_MODULE_5__["Doc"]();
+    new _Admin__WEBPACK_IMPORTED_MODULE_3__["Admin"]();
+    new _Topic__WEBPACK_IMPORTED_MODULE_4__["Topic"]();
+    new _Home__WEBPACK_IMPORTED_MODULE_2__["Home"]();
 });
 
 

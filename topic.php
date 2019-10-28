@@ -1,10 +1,7 @@
 <?php
-
-use View\Snippets;
-
 $open = true;
 require 'lib/site.inc.php';
-$view = new Snippets($site);
+$view = new View\Topic($site, $user);
 ?>
 
 
@@ -15,15 +12,16 @@ $view = new Snippets($site);
 </head>
 
 <body>
-<div class="snippet">
+<div class="topic">
     <?php echo $view->nav(); ?>
 
-
-
-    <?php
-    echo $view->toggleBtn();
-    ?>
-
+    <div class="topic-head">
+        <?php
+        echo $view->topicTitle();
+        echo $view->createDoc();
+        echo $view->topicDocs();
+        ?>
+    </div>
 
     <?php echo $view->footer(); ?>
 </div>

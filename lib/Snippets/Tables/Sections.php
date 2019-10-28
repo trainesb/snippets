@@ -6,34 +6,34 @@ namespace Table;
 
 use Snippets\Site;
 
-class Snip extends Table {
+class Sections extends Table {
 
     public function __construct(Site $site) {
-        parent::__construct($site, "snip");
+        parent::__construct($site, "sections");
         $this->site = $site;
     }
 
-    public function add($snip) {
+    public function add($section) {
         try {
-            $sql = 'INSERT INTO '.$this->tableName.' (snippets_id, text, tag) VALUES (?, ?, ?)';
+            $sql = 'INSERT INTO '.$this->tableName.' (doc_id, text, tag) VALUES (?, ?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $tag = $snip['tag'];
-            $text = $snip['text'];
+            $tag = $section['tag'];
+            $text = $section['text'];
             if($tag === 'pre') {
                 $text = base64_encode($text);
             }
 
-            $statement->execute([$snip['snippets_id'], $text, $tag]);
+            $statement->execute([$section['doc_id'], $text, $tag]);
             return true;
         } catch(\PDOException $e) {
             return false;
         }
     }
 
-    public function getBySnippetId($id) {
+    public function getByDocId($id) {
         try {
-            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE snippets_id = ?';
+            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE doc_id = ?';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
             $statement->execute([$id]);
@@ -55,7 +55,7 @@ class Snip extends Table {
         }
     }
 
-    public function deleteSnipById($id) {
+    public function deleteById($id) {
         try {
             $sql = 'DELETE FROM '.$this->getTableName().' WHERE id=?';
             $pdo = $this->pdo();
@@ -67,12 +67,12 @@ class Snip extends Table {
         }
     }
 
-    public function deleteBySnippetId($snippet_id) {
+    public function deleteByDocId($doc_id) {
         try {
-            $sql = 'DELETE FROM '.$this->getTableName().' WHERE snippets_id=?';
+            $sql = 'DELETE FROM '.$this->getTableName().' WHERE doc_id=?';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$snippet_id]);
+            $statement->execute([$doc_id]);
             return true;
         } catch (\PDOException $e) {
             return false;

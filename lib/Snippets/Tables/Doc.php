@@ -6,19 +6,19 @@ namespace Table;
 
 use Snippets\Site;
 
-class Snippets extends Table {
+class Doc extends Table {
 
     public function __construct(Site $site) {
-        parent::__construct($site, "snippets");
+        parent::__construct($site, "doc");
         $this->site = $site;
     }
 
-    public function createSnippet($lang_id) {
+    public function createDoc($topic_id) {
         try {
-            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';
+            $sql = 'INSERT INTO '.$this->tableName.' (topic_id, title) VALUES (?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$lang_id, "Title"]);
+            $statement->execute([$topic_id, "Title"]);
             return true;
         } catch(\PDOException $e) {
             return false;
@@ -31,25 +31,13 @@ class Snippets extends Table {
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
             $statement->execute();
-            return $statement->fetch(\PDO::FETCH_ASSOC);
+            return $statement->fetch(\PDO::FETCH_ASSOC)['MAX(id)'];
         } catch(\PDOException $e) {
             return false;
         }
     }
 
-    public function add($snippet) {
-        try {
-            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';
-            $pdo = $this->pdo();
-            $statement = $pdo->prepare($sql);
-            $statement->execute([$snippet['language'], $snippet['title']]);
-            return true;
-        } catch(\PDOException $e) {
-            return false;
-        }
-    }
-
-    public function getTitleBySnippetId($id) {
+    public function getTitleByDocId($id) {
         try {
             $sql = 'SELECT title FROM '.$this->getTableName().' WHERE id=?';
             $pdo = $this->pdo();
@@ -61,12 +49,12 @@ class Snippets extends Table {
         }
     }
 
-    public function getById($lang_id) {
+    public function getByTopicId($topic_id) {
         try {
-            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE lang_id=?';
+            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE topic_id=?';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$lang_id]);
+            $statement->execute([$topic_id]);
             return $statement->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             return null;
