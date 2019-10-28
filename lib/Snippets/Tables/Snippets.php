@@ -13,6 +13,30 @@ class Snippets extends Table {
         $this->site = $site;
     }
 
+    public function createSnippet($lang_id) {
+        try {
+            $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$lang_id, "Title"]);
+            return true;
+        } catch(\PDOException $e) {
+            return false;
+        }
+    }
+
+    public function getLastInsertedId() {
+        try {
+            $sql = 'SELECT MAX(id) FROM '.$this->tableName;
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetch(\PDO::FETCH_ASSOC);
+        } catch(\PDOException $e) {
+            return false;
+        }
+    }
+
     public function add($snippet) {
         try {
             $sql = 'INSERT INTO '.$this->tableName.' (lang_id, title) VALUES (?, ?)';

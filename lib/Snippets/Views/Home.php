@@ -15,6 +15,8 @@ class Home extends View {
     private $snips;
     private $query;
 
+    private $lang_id;
+
     public function __construct($site, $user) {
         $this->site = $site;
         $this->languages = new Languages($site);
@@ -28,6 +30,8 @@ class Home extends View {
             $this->setTitle("Home");
         }
 
+        $this->lang_id = $this->languages->getId($this->query)['id'];
+
         if ($user) {
             if ($user->isStaff()) {
                 $this->addLink("./staff.php", "Staff");
@@ -36,6 +40,14 @@ class Home extends View {
         } else {
             $this->addLink("login.php", "Log In");
         }
+    }
+
+    public function createSnippet() {
+        $lang_id = $this->lang_id;
+        return <<<HTML
+<button class="create-snippet" name="$lang_id">Create Snippet</button>
+HTML;
+
     }
 
     public function langLinks() {
@@ -50,7 +62,7 @@ class Home extends View {
     }
 
     public function snipCard() {
-        $lang_id = $this->languages->getId($this->query)['id'];
+        $lang_id = $this->lang_id;
         $snippets = $this->snippets->getById($lang_id);
 
         $html = '';

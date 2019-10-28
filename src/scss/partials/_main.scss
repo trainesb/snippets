@@ -48,5 +48,15 @@ div.main {
     }
 
   }
+
+  div.home-header {
+    position: relative;
+
+    button.create-snippet {
+      position: absolute;
+      top: 0;
+      right: 7em;
+    }
+  }
 }
 
