@@ -3,9 +3,11 @@
 
 namespace View;
 
+use Table\Categories;
 use Table\Languages;
 use Table\Snip;
 use Table\Snippets;
+use Table\Topics;
 
 class Home extends View {
 
@@ -13,8 +15,11 @@ class Home extends View {
     private $languages;
     private $snippets;
     private $snips;
-    private $query;
 
+    private $categories;
+    private $topics;
+
+    private $query;
     private $lang_id;
 
     public function __construct($site, $user) {
@@ -22,6 +27,9 @@ class Home extends View {
         $this->languages = new Languages($site);
         $this->snippets = new Snippets($site);
         $this->snips = new Snip($site);
+
+        $this->categories = new Categories($site);
+        $this->topics = new Topics($site);
 
         $this->query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
         if ($this->query) {
@@ -33,6 +41,9 @@ class Home extends View {
         $this->lang_id = $this->languages->getId($this->query)['id'];
 
         if ($user) {
+            if($user->isAdmin()) {
+                $this->addLink("./admin.php", "Admin");
+            }
             if ($user->isStaff()) {
                 $this->addLink("./staff.php", "Staff");
             }
@@ -40,6 +51,23 @@ class Home extends View {
         } else {
             $this->addLink("login.php", "Log In");
         }
+    }
+
+    public function categories() {
+        $all = $this->categories->getAll();
+
+        $html = '<ul>';
+        foreach ($all as $cat) {
+            $html .= '<li>'.$cat['category'].'<ul>';
+            $cat_id = $cat['id'];
+            $topics = $this->topics->getByCategoryId($cat_id);
+            foreach ($topics as $topic) {
+                $html .= '<li><a href="./topic.php?cat='.$cat['category'].'&topic='.$topic["topic"].'">'.$topic['topic'].'</a></li>';
+            }
+
+            $html .= '</ul></li>';
+        }
+        return $html . '</ul>';
     }
 
     public function createSnippet() {

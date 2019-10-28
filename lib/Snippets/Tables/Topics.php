@@ -27,10 +27,10 @@ class Topics extends Table {
 
     public function add($topic) {
         try {
-            $sql = 'INSERT INTO '.$this->tableName.' (topic, category_id) VALUES (?, ?)';
+            $sql = 'INSERT INTO '.$this->tableName.' (topic, cat_id) VALUES (?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$topic['topic'], $topic['category_id']]);
+            $statement->execute([$topic['topic'], $topic['category']]);
             return true;
         } catch(\PDOException $e) {
             return false;
@@ -49,9 +49,21 @@ class Topics extends Table {
         }
     }
 
+    public function getIdByTopic($topic) {
+        try {
+            $sql = 'SELECT id FROM '.$this->getTableName().' WHERE topic=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$topic]);
+            return $statement->fetch(\PDO::FETCH_ASSOC)["id"];
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
     public function getByCategoryId($category_id) {
         try {
-            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE category_id=?';
+            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE cat_id=?';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
             $statement->execute([$category_id]);

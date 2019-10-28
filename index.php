@@ -26,6 +26,8 @@ $view = new View\Home($site, $user);
             <?php echo $view->createSnippet(); ?>
         </div>
 
+        <?php echo $view->categories(); ?>
+
         <div class="row-container">
             <div class="left">
                 <?php echo $view->langLinks(); ?>

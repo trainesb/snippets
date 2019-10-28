@@ -34,6 +34,10 @@ class User {
             $this->role === self::STAFF;
     }
 
+    public function isAdmin() {
+        return $this->role === self::ADMIN;
+    }
+
     public function setEmail($email) { $this->email = $email; }
 
     public function setName($name) { $this->name = $name; }

@@ -31,7 +31,7 @@ class Doc extends Table {
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
             $statement->execute();
-            return $statement->fetch(\PDO::FETCH_ASSOC);
+            return $statement->fetch(\PDO::FETCH_ASSOC)['MAX(id)'];
         } catch(\PDOException $e) {
             return false;
         }
