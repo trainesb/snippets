@@ -16,10 +16,9 @@ $view = new View\Doc($site, $user);
     <?php
     echo $view->nav();
 
-    echo $view->docHeader();
     ?>
 
-    <?php echo $view->toggleBtn(); ?>
+    <?php echo $view->doc(); ?>
 
     <?php echo $view->footer(); ?>
 </div>

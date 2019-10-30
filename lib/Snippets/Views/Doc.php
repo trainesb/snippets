@@ -64,21 +64,13 @@ class Doc extends View {
         }
     }
 
-    public function toggleBtn() {
-        if($this->mode === 'view') {
-            return $this->viewDoc();
-        } elseif ($this->mode === 'edit') {
-            return $this->editDoc();
-        }
-    }
-
     public function docHeader() {
         $btn = $this->editBtn();
         return <<<HTML
 <div class="head-link">
     <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
 </div>
-<div class="head-link">
+<div class="head-link right">
     $btn
 </div>
 <ul class="doc-info">
@@ -100,43 +92,26 @@ HTML;
 
         echo $this->docHeader();
 
-        foreach ($this->sections as $section) {
+        $editable = false;
+        if($this->mode == 'view') {
+            $editable = true;
+            $html = '<h1 class="snippet-title center" contenteditable="'.$editable.'">'.$this->title.'</h1>';
 
-        }
+            foreach ($this->sections as $section) {
 
-    }
-
-    public function viewDoc() {
-
-        $sections = $this->sections->getByDocId($this->doc_id);
-        $title = <<<HTML
-<h1 class="center snippet-title">$this->title</h1>
-HTML;
-
-
-        $html_snapshot = true;
-        $snapshot = '';
-        $html = '';
-        foreach ($sections as $section) {
-            $section_id = $section['id'];
-            $text = $section['text'];
-            $tag = $section['tag'];
-            if($tag === 'pre') {
-                $text = base64_decode($text);
-                if($html_snapshot) {
-                    $snapshot = '<pre id="' . $section_id . '"><code>' . $text . '</code></pre>';
-                    $html_snapshot = false;
+                $text = $section['text'];
+                if ($section['tag'] == 'pre') {
+                    $text = str_replace("&amp;hellip;", "&hellip;", htmlspecialchars(base64_decode($text), ENT_QUOTES, 'UTF-8'));
+                    $html .= '<pre id="' . $section["id"] . '"><code contenteditable="'.$editable.'">' . $text . '</code></pre>';
+                } else {
+                    $html .= '<p id="' . $section["id"] . '" contenteditable="'.$editable.'">' . $text . '</p>';
                 }
-                $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-                $code = str_replace("&amp;hellip;", "&hellip;", $code);
-                $html .= '<pre id="'.$section_id.'"><code>'.$code.'</code></pre>';
-
-            } else {
-                $html .= '<p id="'.$section_id.'">'.$text.'</p>';
             }
+            return $html;
+        } else {
+            return $this->editDoc();
         }
 
-        return $title . $snapshot . $html;
     }
 
     public function editDoc() {
