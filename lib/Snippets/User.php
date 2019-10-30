@@ -7,7 +7,7 @@ namespace Snippets;
 class User {
 
     const ADMIN = "A";
-    const STAFF = "S";
+    const AUTHOR = "S";
     const CLIENT = "C";
     const SESSION_NAME = 'user';
 
@@ -29,9 +29,9 @@ class User {
         $this->img = $row['img'];
     }
 
-    public function isStaff() {
+    public function isAuthor() {
         return $this->role === self::ADMIN ||
-            $this->role === self::STAFF;
+            $this->role === self::AUTHOR;
     }
 
     public function isAdmin() {

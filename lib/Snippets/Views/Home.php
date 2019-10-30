@@ -26,7 +26,7 @@ class Home extends View {
             if($user->isAdmin()) {
                 $this->addLink("./admin.php", "Admin");
             }
-            if ($user->isStaff()) {
+            if ($user->isAuthor()) {
                 $this->addLink("./author.php", "Author");
             }
             $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");

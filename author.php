@@ -10,9 +10,9 @@ $view = new View\Author($site, $user);
 </head>
 
 <body>
-<div class="staff">
+<div class="author">
     <?php echo $view->nav(); ?>
-    <h1 class='center'>Staff</h1>
+    <h1 class='center'>Author</h1>
 
     <?php
     echo $view->footer();
