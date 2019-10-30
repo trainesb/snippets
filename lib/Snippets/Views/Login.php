@@ -43,7 +43,6 @@ class Login extends View {
         <p><input type="submit" value="Log in"></p>
         <p><a href="">Lost Password</a></p>
 
-        <p><a href="..">BT Glass Home</a></p>
         <p><a href="./register.php">Register</a></p>
     </fieldset>
     
