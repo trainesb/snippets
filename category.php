@@ -1,7 +1,7 @@
 <?php
 $open = true;
 require 'lib/site.inc.php';
-$view = new View\Home($site, $user);
+$view = new View\Category($site, $user);
 ?>
 
 
@@ -12,8 +12,12 @@ $view = new View\Home($site, $user);
 </head>
 
 <body>
-<div class="home">
-    <?php echo $view->present(); ?>
+<div class="category">
+    <?php
+    echo $view->nav();
+    echo $view->present();
+    echo $view->footer();
+    ?>
 </div>
 </body>
 </html>
