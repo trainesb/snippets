@@ -112,6 +112,7 @@ HTML;
 
             if($this->mode == 'edit') {
                 $html .= '<button class="delete-section" id="'.$section["id"].'">Delete</button>';
+                $html .= '<p><input type="radio" class="doc-display" id="'.$section["id"].'"></p>';
             }
         }
 

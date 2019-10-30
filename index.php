@@ -13,7 +13,10 @@ $view = new View\Home($site, $user);
 
 <body>
 <div class="home">
-    <?php echo $view->present(); ?>
+    <?php
+    echo $view->nav();
+    echo $view->present();
+    ?>
 </div>
 </body>
 </html>

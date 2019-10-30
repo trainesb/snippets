@@ -23,7 +23,7 @@ class Category extends View {
         $cat_id = $this->categories->getId($cat)['id'];
         $this->topics = $this->topics->getByCategoryId($cat_id);
 
-        $this->setTitle("Category - ".$this->cat);
+        $this->setTitle($this->cat);
 
         if ($user) {
             if($user->isAdmin()) {

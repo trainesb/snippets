@@ -37,7 +37,6 @@ class Home extends View {
     }
 
     public function present() {
-        echo $this->nav();
         echo "<div class='home-header'><h1 class='center'>".$this->getTitle()."</h1></div>";
         echo $this->categories();
         echo $this->footer();
