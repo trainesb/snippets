@@ -15,17 +15,19 @@ $view = new View\Topic($site, $user);
 <div class="topic">
     <?php echo $view->nav(); ?>
 
-    <div class="topic-head">
-        <?php
-        echo $view->topicTitle();
-        echo $view->createDoc();
-        ?>
+    <div class="container">
+        <div class="column sideNav">
+            <?php echo $view->categories(); ?>
+        </div>
+        <div class="column docs">
+            <div class="topic-head">
+                <?php echo $view->topicTitle(); ?>
+                <?php echo $view->createDoc(); ?>
+            </div>
+
+            <?php echo $view->topicDocs(); ?>
+        </div>
     </div>
-        <?php
-
-        echo $view->topicDocs();
-        ?>
-
 
     <?php echo $view->footer(); ?>
 </div>

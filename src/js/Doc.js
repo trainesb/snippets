@@ -21,37 +21,39 @@ export const Doc = function() {
         });
     });
 
-    $("input.title").change(function (event) {
+    $("h1.snippet-title").on('input', function(event) {
         event.preventDefault();
 
         $.ajax({
             url: "post/update-doc.php",
-            data: {topic_id: this.id, title : this.value},
+            data: {topic_id: this.id, title: this.innerText},
             method: "POST",
             success: function (data) {
                 var json = parse_json(data);
-                if(!json.ok) {
+                if (!json.ok) {
                     alert(json.message);
-                } else {
-                    window.location.reload();
                 }
             }
         });
+
     });
 
-    $("textarea.section").change(function (event) {
+    $(".section").on('input', function (event) {
         event.preventDefault();
+
+        var type = 'text';
+        if($(this).hasClass('code')) {
+            type = 'code';
+        }
 
         $.ajax({
             url: "post/update-section.php",
-            data: {id: this.id, text : this.value, class : this.name},
+            data: {id: this.id, text : this.innerText, class : type},
             method: "POST",
             success: function (data) {
                 var json = parse_json(data);
                 if(!json.ok) {
                     alert(json.message);
-                } else {
-                    window.location.reload();
                 }
             }
         });

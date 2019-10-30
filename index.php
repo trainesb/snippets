@@ -15,7 +15,7 @@ $view = new View\Home($site, $user);
 </head>
 
 <body>
-    <div class="main">
+    <div class="home">
         <?php echo $view->nav(); ?>
 
         <div class="home-header">

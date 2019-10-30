@@ -47,6 +47,23 @@ class Topic extends View {
         }
     }
 
+    public function categories() {
+        $all = $this->categories->getAll();
+
+        $html = '<div class="category-container">';
+        foreach ($all as $cat) {
+            $html .= '<div class="category-list"><ul><li>'.$cat['category'].'<ul>';
+            $cat_id = $cat['id'];
+            $topics = $this->topics->getByCategoryId($cat_id);
+            foreach ($topics as $topic) {
+                $html .= '<li><a href="./topic.php?cat='.$cat['category'].'&topic='.$topic["topic"].'">'.$topic['topic'].'</a></li>';
+            }
+
+            $html .= '</ul></li></ul></div>';
+        }
+        return $html . '</div>';
+    }
+
     public function topicTitle() {
         $cat = $this->category;
         $topic = $this->topic;
@@ -77,9 +94,9 @@ HTML;
             $html .= <<<HTML
 <div class="doc-head">
     <p><a href="./doc.php?cat=$this->category&topic=$this->topic&id=$doc_id&mode=view">$title</a></p>
-    <button class="delete-doc" id='$doc_id' name='$title'><i class='fa fa-trash' aria-hidden='true'></i></button>
 </div>
 HTML;
+            //    <button class="delete-doc" id='$doc_id' name='$title'><i class='fa fa-trash' aria-hidden='true'></i></button>
             $section = $this->sections->getByDocId($doc["id"]);
             if(!empty($section)) {
                 $section = $section[0];

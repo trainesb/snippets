@@ -37,51 +37,8 @@ nav {
   }
 }
 
-div.row-container {
-
-  display: flex;
-
-  div.sideNav {
-    background-color: $msu;
-    width: 21%;
-
-    p {
-      margin: 0;
-
-      a {
-        padding: 0.5em;
-        text-decoration: none;
-        font-size: 1.2em;
-        color: #ffffff;
-        display: block;
-      }
-
-      a:hover {
-        background-color: green;
-      }
-    }
-
-    ul.sub {
-      padding-inline-start: 1em;
-      margin: 0;
-
-      li {
-        list-style: none;
-
-        a {
-          text-decoration: none;
-          color: #ffffff;
-        }
-
-        a:hover {
-          background-color: green;
-        }
-      }
-    }
-  }
-
-  div.col-main {
-    width: 85%;
-    background-color: $background;
-  }
+div.column {
+  display: inline-block;
+  vertical-align: top;
 }
+

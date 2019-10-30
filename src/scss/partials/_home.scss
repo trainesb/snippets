@@ -1,4 +1,4 @@
-div.main {
+div.home {
 
   header {
 
@@ -25,9 +25,13 @@ div.main {
     text-align: center;
 
     div.category-list {
+      vertical-align: top;
       display: inline-block;
+
+      ul {
+        list-style-type: none;
+      }
     }
   }
 
 }
-

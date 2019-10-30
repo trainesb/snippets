@@ -15,11 +15,10 @@ $view = new View\Doc($site, $user);
 <div class="doc">
     <?php
     echo $view->nav();
-    echo $view->docTitle($view->getMode());
 
     ?>
 
-    <?php echo $view->toggleBtn(); ?>
+    <?php echo $view->doc(); ?>
 
     <?php echo $view->footer(); ?>
 </div>
