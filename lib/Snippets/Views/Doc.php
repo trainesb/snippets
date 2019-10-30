@@ -36,7 +36,7 @@ class Doc extends View {
         $this->doc_id = $id;
         $this->cat = $cat;
 
-        $this->sections->getByDocId($this->doc_id);
+        $this->sections = $this->sections->getByDocId($this->doc_id);
 
         $doc = $this->doc->getById($this->doc_id);
         $this->topic_id = $doc["topic_id"];
@@ -65,13 +65,20 @@ class Doc extends View {
     }
 
     public function docHeader() {
-        $btn = $this->editBtn();
-        return <<<HTML
+        $html = <<<HTML
 <div class="head-link">
     <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
 </div>
 <div class="head-link right">
-    $btn
+HTML;
+
+        if($this->mode == 'edit') {
+            $html .= '<p class="done-edit"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=view">Finish Editing</a></p>';
+        } else {
+            $html .= '<p class="edit-snippet"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=edit">Edit Snippet</a></p>';
+        }
+
+        return $html . <<<HTML
 </div>
 <ul class="doc-info">
    <li>Doc: #$this->doc_id</li>
@@ -81,82 +88,40 @@ class Doc extends View {
 HTML;
     }
 
-    public function editBtn() {
-        if($this->mode == 'edit') {
-            return '<p class="done-edit"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=view">Finish Editing</a></p>';
-        }
-        return '<p class="edit-snippet"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=edit">Edit Snippet</a></p>';
-    }
-
     public function doc(){
 
         echo $this->docHeader();
-
         $editable = false;
+        $btn = $this->addSectionBtn();
+
         if($this->mode == 'view') {
             $editable = true;
-            $html = '<h1 class="snippet-title center" contenteditable="'.$editable.'">'.$this->title.'</h1>';
-
-            foreach ($this->sections as $section) {
-
-                $text = $section['text'];
-                if ($section['tag'] == 'pre') {
-                    $text = str_replace("&amp;hellip;", "&hellip;", htmlspecialchars(base64_decode($text), ENT_QUOTES, 'UTF-8'));
-                    $html .= '<pre id="' . $section["id"] . '"><code contenteditable="'.$editable.'">' . $text . '</code></pre>';
-                } else {
-                    $html .= '<p id="' . $section["id"] . '" contenteditable="'.$editable.'">' . $text . '</p>';
-                }
-            }
-            return $html;
-        } else {
-            return $this->editDoc();
+            $btn = '';
         }
 
+        $html = '<h1 class="snippet-title center" contenteditable="'.$editable.'">'.$this->title.'</h1>';
+
+        foreach ($this->sections as $section) {
+
+            $text = $section['text'];
+            if ($section['tag'] == 'pre') {
+                $text = str_replace("&amp;hellip;", "&hellip;", htmlspecialchars(base64_decode($text), ENT_QUOTES, 'UTF-8'));
+                $html .= '<pre id="' . $section["id"] . '"><code contenteditable="'.$editable.'">' . $text . '</code></pre>';
+            } else {
+                $html .= '<p id="' . $section["id"] . '" contenteditable="'.$editable.'">' . $text . '</p>';
+            }
+        }
+
+        return $html . $btn;
     }
 
-    public function editDoc() {
-        $sections = $this->sections->getByDocId($this->doc_id);
-
-        $title = <<<HTML
-<form class="edit-doc" id="edit-doc">
-    <p><input type="text" id="$this->doc_id" class="title" name="title" value="$this->title"></p>
-    <p><input type="text" class="doc-tag" name="doc-tag" placeholder="#tag;"></p>
-HTML;
-
-        $html = '';
-        foreach ($sections as $section) {
-            $section_id = $section['id'];
-            $text = $section['text'];
-            $tag = $section['tag'];
-            if($tag === 'pre') {
-                $text = base64_decode($text);
-                $code = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-                $code = str_replace("&amp;hellip;", "&hellip;", $code);
-                $html .= <<<HTML
-<div class="doc-textarea code">
-    <textarea class="section" name="code" id="$section_id">$code</textarea>
-    <button class="delete-section" id="$section_id"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    public function addSectionBtn() {
+        return <<<HTML
+<div class="edit-section-btn">
+    <button value="$this->doc_id" name="textarea" class="add-section">Add Textarea</button>
+    <button value="$this->doc_id" name="pre" class="add-section">Add Code Snippet</button>
 </div>
 HTML;
-            } else {
-                $html .= <<<HTML
-<div class="doc-textarea">
-    <textarea class="section" name="description" id="$section_id">$text</textarea>
-    <button class="delete-section" id="$section_id"><i class="fa fa-trash" aria-hidden="true"></i></button>
-</div>
-HTML;
-
-            }
-        }
-
-        $html .= <<<HTML
-    <div class="edit-section-btn">
-        <button value="$this->doc_id" name="textarea" class="add-section">Add Textarea</button>
-        <button value="$this->doc_id" name="pre" class="add-section">Add Code Snippet</button>
-    </div>
-</form>
-HTML;
-        return $title . $html;
     }
 
 }

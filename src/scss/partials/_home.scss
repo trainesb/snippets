@@ -27,6 +27,10 @@ div.home {
     div.category-list {
       vertical-align: top;
       display: inline-block;
+
+      ul {
+        list-style-type: none;
+      }
     }
   }
 
