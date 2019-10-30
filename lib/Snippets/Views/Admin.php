@@ -26,6 +26,33 @@ class Admin extends View {
         $this->addLink("post/logout.php", "Log Out");
     }
 
+    public function present() {
+        $nav = $this->nav();
+
+        $title = $this->getTitle();
+        $categoryForm = $this->newCatForm();
+        $categoryTable = $this->CategoriesTable();
+        $topicForm = $this->newTopicForm();
+        $topicTable = $this->TopicsTable();
+
+        $footer = $this->footer();
+
+        return <<<HTML
+$nav
+<div class="admin-wrapper">
+    <h1 class="center">$title</h1>
+
+    <div class="left">$categoryForm</div>
+    <div class="right">$categoryTable</div>
+
+    <div class="left">$topicForm</div>
+    <div class="right">$topicTable</div>
+
+</div>
+$footer
+HTML;
+    }
+
     public function newCatForm() {
         return <<<HTML
 <form id="add-category" method="post" action="post/add-category.php">
