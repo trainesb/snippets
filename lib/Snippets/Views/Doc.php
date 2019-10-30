@@ -73,35 +73,32 @@ class Doc extends View {
     }
 
     public function docHeader() {
-        $mode = $this->mode;
-        if($mode == 'edit') {
-            return <<<HTML
-<div class="left-half">
-    <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
-</div>
-<div class="right-half">
-    <p class="done-edit"><a href="./doc.php?cat=$this->cat&topic=$this->topic&id=$this->doc_id&mode=view">Finish Editing</a></p>
-</div>
-HTML;
-        }
+        $btn = $this->editBtn();
         return <<<HTML
 <div class="left-half">
     <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
 </div>
 <div class="right-half">
-    <p class="edit-snippet"><a href="./doc.php?cat=$this->cat&topic=$this->topic&id=$this->doc_id&mode=edit">Edit Snippet</a></p>
+    $btn
 </div>
 <ul class="doc-info">
    <li>Doc: #$this->doc_id</li>
    <li>Author: $this->author</li>
    <li>Updated: $this->updated</li> 
 </ul>
-
-<h1 class="center snippet-title">$this->title</h1>
 HTML;
     }
 
+    public function editBtn() {
+        if($this->mode == 'edit') {
+            return '<p class="done-edit"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=view">Finish Editing</a></p>';
+        }
+        return '<p class="edit-snippet"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=edit">Edit Snippet</a></p>';
+    }
+
     public function doc(){
+
+        echo $this->docHeader();
 
         foreach ($this->sections as $section) {
 
@@ -112,6 +109,10 @@ HTML;
     public function viewDoc() {
 
         $sections = $this->sections->getByDocId($this->doc_id);
+        $title = <<<HTML
+<h1 class="center snippet-title">$this->title</h1>
+HTML;
+
 
         $html_snapshot = true;
         $snapshot = '';
@@ -135,7 +136,7 @@ HTML;
             }
         }
 
-        return $snapshot . $html;
+        return $title . $snapshot . $html;
     }
 
     public function editDoc() {
