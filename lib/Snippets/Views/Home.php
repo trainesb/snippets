@@ -29,7 +29,7 @@ class Home extends View {
             if ($user->isStaff()) {
                 $this->addLink("./author.php", "Author");
             }
-            $this->addLink("./profile.php", "Profile");
+            $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
             $this->addLink("post/logout.php", "Log Out");
         } else {
             $this->addLink("./login.php", "Log In");

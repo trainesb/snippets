@@ -1,6 +1,6 @@
 <?php
 require 'lib/site.inc.php';
-$view = new View\Admin($site);
+$view = new View\Admin($site, $user);
 ?>
 
 <!DOCTYPE html>

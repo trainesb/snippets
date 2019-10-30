@@ -17,6 +17,7 @@ class User {
     private $phone; 	// Phone number
     private $joined;	// When user was added
     private $role;		// User role
+    private $img;
 
     public function __construct($row) {
         $this->id = $row['id'];
@@ -25,6 +26,7 @@ class User {
         $this->phone = $row['phone'];
         $this->joined = strtotime($row['joined']);
         $this->role = $row['role'];
+        $this->img = $row['img'];
     }
 
     public function isStaff() {
@@ -44,6 +46,8 @@ class User {
 
     public function setRole($role) { $this->role = $role; }
 
+    public function setImg($img) { $this->img = $img; }
+
     public function getId() { return $this->id; }
 
     public function getEmail() { return $this->email; }
@@ -55,4 +59,6 @@ class User {
     public function getRole() { return $this->role; }
 
     public function getJoined() { return $this->joined; }
+
+    public function getImg() { return $this->img; }
 }

@@ -14,7 +14,7 @@ class Admin extends View {
     private $cat;
     private $topics;
 
-    public function __construct(Site $site) {
+    public function __construct(Site $site, $user) {
         $this->site = $site;
         $this->cat = new Categories($site);
         $this->topics = new Topics($site);
@@ -22,7 +22,7 @@ class Admin extends View {
         $this->setTitle("Admin");
 
         $this->addLink("./author.php", "Author");
-        $this->addLink("./profile.php", "Profile");
+        $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
         $this->addLink("post/logout.php", "Log Out");
     }
 
