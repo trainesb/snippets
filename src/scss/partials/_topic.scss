@@ -25,4 +25,19 @@ div.topic {
     }
   }
 
+  div.sideNav {
+    width: 15%;
+    padding-top: 4em;
+
+    div.category-list ul {
+        list-style-type: none;
+        padding-left: 1em;
+
+      li ul {
+        padding-left: 0.5em;
+      }
+
+    }
+  }
+
 }

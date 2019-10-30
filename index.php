@@ -1,7 +1,4 @@
 <?php
-
-use View\Snippets;
-
 $open = true;
 require 'lib/site.inc.php';
 $view = new View\Home($site, $user);
