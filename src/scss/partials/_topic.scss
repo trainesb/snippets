@@ -16,13 +16,12 @@ div.topic {
 
   div.container {
 
-    div.doc-head {
-      position: relative;
+    ul.doc-head {
+      list-style-type: none;
 
-      button.delete-doc {
-        position: absolute;
-        right: 7em;
-        top: 0;
+      li {
+        display: inline-block;
+        width: 32%;
       }
     }
 

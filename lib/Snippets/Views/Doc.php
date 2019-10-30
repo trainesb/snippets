@@ -53,7 +53,7 @@ class Doc extends View {
         $this->topic_id = $doc["topic_id"];
         $this->author = $doc["author"];
         $this->title = $doc["title"];
-        $this->updated = date("d-m-Y", strtotime($doc["updated"]));
+        $this->updated = date("m-d-Y", strtotime($doc["updated"]));
         $this->section_view = $this->doc->getSectionDisplay($this->doc_id);
 
         $this->tags = $this->tags->getByDocId($this->doc_id);

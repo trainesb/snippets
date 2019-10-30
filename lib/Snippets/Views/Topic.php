@@ -6,6 +6,7 @@ namespace View;
 use Table\Categories;
 use Table\Sections;
 use Table\Topics;
+use Table\Users;
 
 class Topic extends View {
 
@@ -93,10 +94,16 @@ HTML;
         foreach ($docs as $doc) {
             $doc_id = $doc['id'];
             $title = $doc['title'];
+            $author_id = $doc['author'];
+            $users = new Users($this->site);
+            $author = $users->get($author_id)->getName();
+            $updated = date('m-d-Y', strtotime($doc['updated']));
             $html .= <<<HTML
-<div class="doc-head">
-    <p><a href="./doc.php?cat=$this->category&topic=$this->topic&id=$doc_id&mode=view">$title</a></p>
-</div>
+<ul class="doc-head">
+    <li><a href="./doc.php?cat=$this->category&topic=$this->topic&id=$doc_id&mode=view">$title</a></li>
+    <li>Author: <a href="./profile.php?id=$author_id&mode=view">$author</a></li>
+    <li>Last Updated: $updated</li> 
+</ul>
 HTML;
             //    <button class="delete-doc" id='$doc_id' name='$title'><i class='fa fa-trash' aria-hidden='true'></i></button>
             $section = $this->docs->getSectionDisplay($doc["id"]);
