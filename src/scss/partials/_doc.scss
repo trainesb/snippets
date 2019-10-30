@@ -1,6 +1,6 @@
 div.doc {
 
-  div {
+  div.head-link {
       display: inline-block;
       width: 49%;
   }
@@ -28,8 +28,6 @@ div.doc {
 
       button.delete-section {
         position: absolute;
-        top: 0;
-        right: 0;
       }
     }
 

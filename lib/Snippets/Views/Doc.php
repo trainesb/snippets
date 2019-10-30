@@ -75,10 +75,10 @@ class Doc extends View {
     public function docHeader() {
         $btn = $this->editBtn();
         return <<<HTML
-<div class="left-half">
+<div class="head-link">
     <p><a href="./topic.php?cat=$this->cat&topic=$this->topic">$this->cat - $this->topic</a></p>
 </div>
-<div class="right-half">
+<div class="head-link">
     $btn
 </div>
 <ul class="doc-info">
@@ -175,8 +175,10 @@ HTML;
         }
 
         $html .= <<<HTML
-    <button value="$this->doc_id" name="textarea" class="add-section">Add Textarea</button>
-    <button value="$this->doc_id" name="pre" class="add-section">Add Code Snippet</button>
+    <div class="edit-section-btn">
+        <button value="$this->doc_id" name="textarea" class="add-section">Add Textarea</button>
+        <button value="$this->doc_id" name="pre" class="add-section">Add Code Snippet</button>
+    </div>
 </form>
 HTML;
         return $title . $html;
