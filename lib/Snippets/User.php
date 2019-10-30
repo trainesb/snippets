@@ -59,4 +59,6 @@ class User {
     public function getNotes() { return $this->notes; }
 
     public function getRole() { return $this->role; }
+
+    public function getJoined() { return $this->joined; }
 }
