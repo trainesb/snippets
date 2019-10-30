@@ -1,4 +1,5 @@
 <?php
+$open = true;
 require 'lib/site.inc.php';
 $view = new View\Profile($site, $user);
 ?>
@@ -18,7 +19,7 @@ $view = new View\Profile($site, $user);
         <h1 class='center'><?php echo $view->getTitle(); ?></h1>
     </div>
 
-    <?php echo $view->userCard(); ?>
+    <?php echo $view->present(); ?>
 
 
     <?php echo $view->footer(); ?>

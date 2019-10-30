@@ -39,9 +39,9 @@ class Topic extends View {
                 $this->addLink("./admin.php", "Admin");
             }
             if ($user->isStaff()) {
-                $this->addLink("./staff.php", "Staff");
+                $this->addLink("./author.php", "Author");
             }
-            $this->addLink("./profile.php", "Profile");
+            $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
             $this->addLink("./logout,php", "Log Out");
         } else {
             $this->addLink("login.php", "Log In");

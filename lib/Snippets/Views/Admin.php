@@ -14,16 +14,43 @@ class Admin extends View {
     private $cat;
     private $topics;
 
-    public function __construct(Site $site) {
+    public function __construct(Site $site, $user) {
         $this->site = $site;
         $this->cat = new Categories($site);
         $this->topics = new Topics($site);
 
         $this->setTitle("Admin");
 
-        $this->addLink("./staff.php", "Staff");
-        $this->addLink("./profile.php", "Profile");
+        $this->addLink("./author.php", "Author");
+        $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
         $this->addLink("post/logout.php", "Log Out");
+    }
+
+    public function present() {
+        $nav = $this->nav();
+
+        $title = $this->getTitle();
+        $categoryForm = $this->newCatForm();
+        $categoryTable = $this->CategoriesTable();
+        $topicForm = $this->newTopicForm();
+        $topicTable = $this->TopicsTable();
+
+        $footer = $this->footer();
+
+        return <<<HTML
+$nav
+<div class="admin-wrapper">
+    <h1 class="center">$title</h1>
+
+    <div class="left">$categoryForm</div>
+    <div class="right">$categoryTable</div>
+
+    <div class="left">$topicForm</div>
+    <div class="right">$topicTable</div>
+
+</div>
+$footer
+HTML;
     }
 
     public function newCatForm() {
