@@ -15,6 +15,8 @@ class Topic extends View {
     private $docs;
     private $sections;
 
+    private $user;
+
     private $site;
     private $topic;
     private $topic_id;
@@ -23,6 +25,7 @@ class Topic extends View {
 
     public function __construct($site, $user) {
         $this->site = $site;
+        $this->user = $user;
 
         $this->topics = new Topics($this->site);
         $this->categories = new Categories($this->site);
@@ -78,10 +81,12 @@ HTML;
     }
 
     public function createDoc() {
-        if($this->topic_id) {
-            return <<<HTML
+        if($this->user != null) {
+            if (($this->topic_id) and ($this->user->isAdmin())) {
+                return <<<HTML
 <button class="create-doc" name="$this->topic_id" value="$this->topic" id="$this->category">Create Document</button>
 HTML;
+            }
         }
         return null;
     }
