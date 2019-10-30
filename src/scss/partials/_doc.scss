@@ -1,16 +1,40 @@
 div.doc {
-  div.row-container {
-    position: relative;
 
-    div.left-half {
-      position: absolute;
-      top: 1em;
-      left: 7em;
+  div {
+      display: inline-block;
+      width: 49%;
+  }
+
+  div.right-half {
+    text-align: right;
+  }
+
+  ul.doc-info {
+    list-style-type: none;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      width: 33%;
+    }
+  }
+
+  form.edit-doc {
+    text-align: center;
+    padding-top: 3em;
+
+    div.doc-textarea {
+      position: relative;
+
+      button.delete-section {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
     }
 
-    div.right-half {
-      position: absolute;
-      right: 7em;
+    div.doc-textarea.code textarea {
+      background-color: #eee;
     }
   }
 }

@@ -13,12 +13,12 @@ class Doc extends Table {
         $this->site = $site;
     }
 
-    public function createDoc($topic_id) {
+    public function createDoc($topic_id, $author) {
         try {
-            $sql = 'INSERT INTO '.$this->tableName.' (topic_id, title) VALUES (?, ?)';
+            $sql = 'INSERT INTO '.$this->tableName.' (topic_id, author, title, updated) VALUES (?, ?, ?, ?)';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$topic_id, "Title"]);
+            $statement->execute([$topic_id, $author, "Title", date("Y-m-d H:i:s")]);
             return true;
         } catch(\PDOException $e) {
             return false;
@@ -37,18 +37,6 @@ class Doc extends Table {
         }
     }
 
-    public function getTitleByDocId($id) {
-        try {
-            $sql = 'SELECT title FROM '.$this->getTableName().' WHERE id=?';
-            $pdo = $this->pdo();
-            $statement = $pdo->prepare($sql);
-            $statement->execute([$id]);
-            return $statement->fetch(\PDO::FETCH_ASSOC)["title"];
-        } catch (\PDOException $e) {
-            return null;
-        }
-    }
-
     public function getByTopicId($topic_id) {
         try {
             $sql = 'SELECT * FROM '.$this->getTableName().' WHERE topic_id=?';
@@ -56,6 +44,18 @@ class Doc extends Table {
             $statement = $pdo->prepare($sql);
             $statement->execute([$topic_id]);
             return $statement->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
+    public function getById($id) {
+        try {
+            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return $statement->fetch(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             return null;
         }

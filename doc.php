@@ -15,8 +15,8 @@ $view = new View\Doc($site, $user);
 <div class="doc">
     <?php
     echo $view->nav();
-    echo $view->docTitle($view->getMode());
 
+    echo $view->docHeader();
     ?>
 
     <?php echo $view->toggleBtn(); ?>
