@@ -21,7 +21,7 @@ export const Doc = function() {
         });
     });
 
-    $("h1.snippet-title").on('input', function(event) {
+    $("h1.title").on('input', function(event) {
         event.preventDefault();
 
         $.ajax({

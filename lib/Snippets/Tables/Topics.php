@@ -49,12 +49,12 @@ class Topics extends Table {
         }
     }
 
-    public function getIdByTopic($topic) {
+    public function getIdByCatIdAndTopic($cat_id, $topic) {
         try {
-            $sql = 'SELECT id FROM '.$this->getTableName().' WHERE topic=?';
+            $sql = 'SELECT id FROM '.$this->getTableName().' WHERE topic=? AND cat_id=?';
             $pdo = $this->pdo();
             $statement = $pdo->prepare($sql);
-            $statement->execute([$topic]);
+            $statement->execute([$topic, $cat_id]);
             return $statement->fetch(\PDO::FETCH_ASSOC)["id"];
         } catch (\PDOException $e) {
             return null;

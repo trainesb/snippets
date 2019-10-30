@@ -58,6 +58,20 @@ SQL;
 
     }
 
+    public function getIdByName($name) {
+        $sql = 'SELECT id FROM '.$this->tableName.' WHERE name=?';
+
+        $pdo = $this->pdo();
+        $statement = $pdo->prepare($sql);
+
+        $statement->execute(array($name));
+        if($statement->rowCount() === 0) {
+            return null;
+        }
+
+        return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function update(User $user) {
         $sql = 'UPDATE $this->tablename SET email=?, name=?, phone=?, address=?, notes=?, role=? WHERE id=?';
         $pdo = $this->pdo();

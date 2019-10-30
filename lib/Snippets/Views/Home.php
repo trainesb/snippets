@@ -36,12 +36,18 @@ class Home extends View {
         }
     }
 
+    public function present() {
+        echo "<div class='home-header'><h1 class='center'>".$this->getTitle()."</h1></div>";
+        echo $this->categories();
+        echo $this->footer();
+    }
+
     public function categories() {
         $all = $this->categories->getAll();
 
         $html = '<div class="category-container">';
         foreach ($all as $cat) {
-            $html .= '<div class="category-list"><ul><li>'.$cat['category'].'<ul>';
+            $html .= '<div class="category-list"><ul><li><a href="./category.php?cat='.$cat["category"].'">'.$cat['category'].'</a><ul>';
             $cat_id = $cat['id'];
             $topics = $this->topics->getByCategoryId($cat_id);
             foreach ($topics as $topic) {
@@ -52,5 +58,4 @@ class Home extends View {
         }
         return $html . '</div>';
     }
-
 }
