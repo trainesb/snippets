@@ -11204,37 +11204,39 @@ const Doc = function() {
         });
     });
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("input.title").change(function (event) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("h1.snippet-title").on('input', function(event) {
         event.preventDefault();
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
             url: "post/update-doc.php",
-            data: {topic_id: this.id, title : this.value},
+            data: {topic_id: this.id, title: this.innerText},
             method: "POST",
             success: function (data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-                if(!json.ok) {
+                if (!json.ok) {
                     alert(json.message);
-                } else {
-                    window.location.reload();
                 }
             }
         });
+
     });
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("textarea.section").change(function (event) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".section").on('input', function (event) {
         event.preventDefault();
+
+        var type = 'text';
+        if(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('code')) {
+            type = 'code';
+        }
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
             url: "post/update-section.php",
-            data: {id: this.id, text : this.value, class : this.name},
+            data: {id: this.id, text : this.innerText, class : type},
             method: "POST",
             success: function (data) {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
                 if(!json.ok) {
                     alert(json.message);
-                } else {
-                    window.location.reload();
                 }
             }
         });

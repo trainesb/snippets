@@ -99,16 +99,20 @@ HTML;
             $btn = '';
         }
 
-        $html = '<h1 class="snippet-title center" contenteditable="'.$editable.'">'.$this->title.'</h1>';
+        $html = '<h1 class="snippet-title center" id="'.$this->doc_id.'" contenteditable="'.$editable.'">'.$this->title.'</h1>';
 
         foreach ($this->sections as $section) {
 
             $text = $section['text'];
             if ($section['tag'] == 'pre') {
                 $text = str_replace("&amp;hellip;", "&hellip;", htmlspecialchars(base64_decode($text), ENT_QUOTES, 'UTF-8'));
-                $html .= '<pre id="' . $section["id"] . '"><code contenteditable="'.$editable.'">' . $text . '</code></pre>';
+                $html .= '<pre id="' . $section["id"] . '" class="section code center"><code contenteditable="'.$editable.'">' . $text . '</code></pre>';
             } else {
-                $html .= '<p id="' . $section["id"] . '" contenteditable="'.$editable.'">' . $text . '</p>';
+                $html .= '<p id="' . $section["id"] . '" class="section center" contenteditable="'.$editable.'">' . $text . '</p>';
+            }
+
+            if($this->mode == 'edit') {
+                $html .= '<button class="delete-section" id="'.$section["id"].'">Delete</button>';
             }
         }
 
