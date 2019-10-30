@@ -17,7 +17,6 @@ class Doc extends View {
     private $doc_id;
     private $topic_id;
     private $author;
-    private $section_view;
     private $title;
     private $updated;
 
@@ -41,7 +40,6 @@ class Doc extends View {
         $doc = $this->doc->getById($this->doc_id);
         $this->topic_id = $doc["topic_id"];
         $this->author = $doc["author"];
-        $this->section_view = $doc["section_view"];
         $this->title = $doc["title"];
         $this->updated = date("d-m-Y", strtotime($doc["updated"]));
 
