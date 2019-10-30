@@ -15,7 +15,7 @@ export const Login = function() {
                 var json = parse_json(data);
                 if(json.ok) {
                     if(json.staff) {
-                        window.location.assign("./staff.php");
+                        window.location.assign("./author.php");
                     } else {
                         window.location.assign('./');
                     }

@@ -1,6 +1,6 @@
 <?php
 require 'lib/site.inc.php';
-$view = new View\Staff($site);
+$view = new View\Author($site);
 ?>
 
 <!DOCTYPE html>

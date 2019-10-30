@@ -11369,7 +11369,7 @@ const Login = function() {
                 var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
                 if(json.ok) {
                     if(json.staff) {
-                        window.location.assign("./staff.php");
+                        window.location.assign("./author.php");
                     } else {
                         window.location.assign('./');
                     }
@@ -11383,6 +11383,7 @@ const Login = function() {
         });
     });
 };
+
 
 /***/ }),
 

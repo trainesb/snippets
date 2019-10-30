@@ -54,7 +54,7 @@ class Doc extends View {
                 $this->addLink("./admin.php", "Admin");
             }
             if ($user->isStaff()) {
-                $this->addLink("./staff.php", "Staff");
+                $this->addLink("./author.php", "Author");
             }
             $this->addLink("./profile.php", "Profile");
             $this->addLink("./logout,php", "Log Out");

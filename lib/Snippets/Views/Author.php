@@ -6,14 +6,14 @@ namespace View;
 
 use Snippets\Site;
 
-class Staff extends View {
+class Author extends View {
 
     protected $site;
 
     public function __construct(Site $site) {
         $this->site = $site;
 
-        $this->setTitle("Staff");
+        $this->setTitle("Author");
 
         $this->addLink("./profile.php", "Profile");
         $this->addLink("post/logout.php", "Log Out");

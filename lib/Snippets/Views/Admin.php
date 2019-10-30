@@ -21,7 +21,7 @@ class Admin extends View {
 
         $this->setTitle("Admin");
 
-        $this->addLink("./staff.php", "Staff");
+        $this->addLink("./author.php", "Author");
         $this->addLink("./profile.php", "Profile");
         $this->addLink("post/logout.php", "Log Out");
     }

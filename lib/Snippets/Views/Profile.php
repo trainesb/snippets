@@ -26,7 +26,7 @@ class Profile extends View {
 
         $this->setTitle("Profile");
 
-        $this->addLink("./staff.php", "Staff");
+        $this->addLink("./author.php", "Author");
         $this->addLink("post/logout.php", "Log Out");
     }
 
