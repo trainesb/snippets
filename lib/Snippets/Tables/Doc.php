@@ -37,6 +37,30 @@ class Doc extends Table {
         }
     }
 
+    public function getSectionDisplay($doc_id) {
+        try {
+            $sql = 'SELECT section_view FROM '.$this->getTableName().' WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$doc_id]);
+            return $statement->fetch(\PDO::FETCH_ASSOC)["section_view"];
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
+    public function updateDocDisplay($doc_id, $section_id) {
+        try {
+            $sql = 'UPDATE '.$this->getTableName().' SET section_view=? WHERE id=?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$section_id, $doc_id]);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
+
     public function getByTopicId($topic_id) {
         try {
             $sql = 'SELECT * FROM '.$this->getTableName().' WHERE topic_id=?';

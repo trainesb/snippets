@@ -25,6 +25,29 @@ div.doc {
     }
   }
 
+  div.section-view-wrapper {
+    margin: 1em 10em;
+    border: thin solid rebeccapurple;
+    text-align: center;
+
+    p.section {
+      margin: 0;
+      min-height: 5em;
+      padding: 1em 2em;
+    }
+
+    pre.section {
+      margin: 0;
+
+      code {
+        min-height: 5em;
+        background-color: #eee;
+        display: block;
+        padding: 1em 2em;
+      }
+    }
+  }
+
   div.title-wrapper {
     text-align: center;
 

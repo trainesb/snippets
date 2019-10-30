@@ -43,6 +43,18 @@ class Sections extends Table {
         }
     }
 
+    public function getById($id) {
+        try {
+            $sql = 'SELECT * FROM '.$this->getTableName().' WHERE id = ?';
+            $pdo = $this->pdo();
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$id]);
+            return $statement->fetch(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
     public function updateTextById($text, $id) {
         try {
             $sql = 'UPDATE '.$this->getTableName().' SET text=? WHERE id=?';
