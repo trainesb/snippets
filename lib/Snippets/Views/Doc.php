@@ -102,9 +102,9 @@ HTML;
 HTML;
 
         if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
-            $html .= '<ul class="tags edit">';
+            $html .= '<ul class="tags edit">Tags: ';
         } else {
-            $html .= '<ul class="tags">';
+            $html .= '<ul class="tags">Tags: ';
         }
 
         foreach ($this->tags as $tag) {
