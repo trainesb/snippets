@@ -86,7 +86,7 @@ export const Doc = function() {
         if(confirm("Delete Section?")) {
             $.ajax({
                 url: "post/delete-section.php",
-                data: {id: this.id},
+                data: {id: this.id, doc_id: this.name},
                 method: "POST",
                 success: function (data) {
                     var json = parse_json(data);

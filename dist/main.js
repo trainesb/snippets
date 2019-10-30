@@ -11269,7 +11269,7 @@ const Doc = function() {
         if(confirm("Delete Section?")) {
             jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
                 url: "post/delete-section.php",
-                data: {id: this.id},
+                data: {id: this.id, doc_id: this.name},
                 method: "POST",
                 success: function (data) {
                     var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);

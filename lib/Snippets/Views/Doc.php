@@ -178,7 +178,7 @@ HTML;
             }
 
             if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
-                $html .= '<button class="delete-section" id="'.$section["id"].'">Delete</button>';
+                $html .= '<button class="delete-section" id="'.$section["id"].'" name="'.$this->doc_id.'">Delete</button>';
 
                 if($this->section_view == $section["id"]) {
                     $html .= '<p class="display-checkbox"><input type="checkbox" class="doc-display" id="'.$section["id"].'" name="'.$this->doc_id.'" checked>Doc Preview</p>';
