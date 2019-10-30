@@ -12,6 +12,7 @@ class Doc extends View {
     protected $site;
 
     private $doc;
+    private $preview_section;
     private $sections;
     private $tags;
 
@@ -22,6 +23,7 @@ class Doc extends View {
     private $title;
     private $updated;
 
+    private $section_view;
     private $author_id;
     private $current_user_id;
 
@@ -45,14 +47,19 @@ class Doc extends View {
         $this->doc_id = $id;
         $this->cat = $cat;
 
-        $this->tags = $this->tags->getByDocId($this->doc_id);
-        $this->sections = $this->sections->getByDocId($this->doc_id);
+
 
         $doc = $this->doc->getById($this->doc_id);
         $this->topic_id = $doc["topic_id"];
         $this->author = $doc["author"];
         $this->title = $doc["title"];
         $this->updated = date("d-m-Y", strtotime($doc["updated"]));
+        $this->section_view = $this->doc->getSectionDisplay($this->doc_id);
+
+        $this->tags = $this->tags->getByDocId($this->doc_id);
+
+        $this->preview_section = $this->sections->getById($this->section_view);
+        $this->sections = $this->sections->getByDocId($this->doc_id);
 
         $authorUser = new Users($this->site);
         $authorUser = $authorUser->get($this->author);
@@ -144,7 +151,17 @@ HTML;
             $html .= '<h1 class="title" id="'.$this->doc_id.'" contenteditable="'.$editable.'">'.$this->title.'</h1></div>';
         }
 
+
+
+        if($this->section_view != 0) {
+
+            if($this->preview_section["tag"] == "pre") {
+                $html .= '<div class="section-view-wrapper"><pre id="' . $this->preview_section["id"] . '" class="section code"><code>' . base64_decode($this->preview_section["text"]) . '</code></pre></div>';
+            }
+        }
+
         $html .= '<div class="sections-wrapper">';
+
         foreach ($this->sections as $section) {
 
             $text = $section['text'];
@@ -162,7 +179,12 @@ HTML;
 
             if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
                 $html .= '<button class="delete-section" id="'.$section["id"].'">Delete</button>';
-                $html .= '<p class="display-checkbox"><input type="checkbox" class="doc-display" id="'.$section["id"].'"></p>';
+
+                if($this->section_view == $section["id"]) {
+                    $html .= '<p class="display-checkbox"><input type="checkbox" class="doc-display" id="'.$section["id"].'" name="'.$this->doc_id.'" checked>Doc Preview</p>';
+                } else {
+                    $html .= '<p class="display-checkbox"><input type="checkbox" class="doc-display" id="'.$section["id"].'" name="'.$this->doc_id.'">Doc Preview</p>';
+                }
             }
 
             $html .= "</div>";

@@ -99,16 +99,14 @@ HTML;
 </div>
 HTML;
             //    <button class="delete-doc" id='$doc_id' name='$title'><i class='fa fa-trash' aria-hidden='true'></i></button>
-            $section = $this->sections->getByDocId($doc["id"]);
-            if(!empty($section)) {
-                $section = $section[0];
+            $section = $this->docs->getSectionDisplay($doc["id"]);
+            $section = $this->sections->getById($section);
 
+            if(!empty($section)) {
                 if($section["tag"] == 'pre') {
-                    $text = base64_decode($section['text']);
-                    $html .= '<pre><code>'.$text.'</code></pre>';
+                    $html .= '<pre class="section"><code>'.base64_decode($section['text']).'</code></pre>';
                 } else {
-                    $text = $section['text'];
-                    $html .= '<p>'.$text.'</p>';
+                    $html .= '<p class="section">'.$section['text'].'</p>';
                 }
             }
         }

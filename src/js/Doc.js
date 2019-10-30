@@ -26,7 +26,7 @@ export const Doc = function() {
 
         $.ajax({
             url: "post/update-doc.php",
-            data: {topic_id: this.id, title: this.innerText},
+            data: {topic_id: this.id, title: this.innerText, type: "title"},
             method: "POST",
             success: function (data) {
                 var json = parse_json(data);
@@ -37,6 +37,27 @@ export const Doc = function() {
         });
 
     });
+
+    $("input.doc-display").click(function (event) {
+        event.preventDefault();
+
+        if(confirm("Set "+this.id+" as the documentation display?")) {
+            $.ajax({
+                url: "post/update-doc.php",
+                data: {section_id: this.id, doc_id: this.name, type: "preview"},
+                method: "POST",
+                success: function (data) {
+                    var json = parse_json(data);
+                    if(!json.ok) {
+                        alert(json.message);
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+    });
+
 
     $(".section").on('input', function (event) {
         event.preventDefault();
