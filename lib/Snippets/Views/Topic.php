@@ -17,6 +17,7 @@ class Topic extends View {
     private $site;
     private $topic;
     private $topic_id;
+    private $cat_id;
     private $category;
 
     public function __construct($site, $user) {
@@ -31,7 +32,8 @@ class Topic extends View {
         $this->topic = $topic;
         $this->category = $cat;
 
-        $this->topic_id = $this->topics->getIdByTopic($this->topic);
+        $this->cat_id = $this->categories->getId($this->category)['id'];
+        $this->topic_id = $this->topics->getIdByCatIdAndTopic($this->cat_id, $this->topic);
 
 
         if ($user) {
@@ -53,9 +55,8 @@ class Topic extends View {
 
         $html = '<div class="category-container">';
         foreach ($all as $cat) {
-            $html .= '<div class="category-list"><ul><li>'.$cat['category'].'<ul>';
-            $cat_id = $cat['id'];
-            $topics = $this->topics->getByCategoryId($cat_id);
+            $html .= '<div class="category-list"><ul><a href="./category.php?cat='.$cat["category"].'">'.$cat['category'].'</a><ul>';
+            $topics = $this->topics->getByCategoryId($cat['id']);
             foreach ($topics as $topic) {
                 $html .= '<li><a href="./topic.php?cat='.$cat['category'].'&topic='.$topic["topic"].'">'.$topic['topic'].'</a></li>';
             }
