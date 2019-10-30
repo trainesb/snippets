@@ -14,7 +14,6 @@ class Doc extends View {
     private $doc;
     private $sections;
     private $tags;
-    private $users;
 
     //Document Variables
     private $doc_id;
@@ -22,6 +21,9 @@ class Doc extends View {
     private $author;
     private $title;
     private $updated;
+
+    private $author_id;
+    private $current_user_id;
 
     private $topic;
     private $cat;
@@ -32,6 +34,10 @@ class Doc extends View {
         $this->doc = new \Table\Doc($site);
         $this->sections = new Sections($site);
         $this->tags = new Tag($site);
+
+        if($user != null) {
+            $this->current_user_id = $user->getId();
+        }
 
         parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY));
         $this->topic = $topic;
@@ -48,9 +54,10 @@ class Doc extends View {
         $this->title = $doc["title"];
         $this->updated = date("d-m-Y", strtotime($doc["updated"]));
 
-        $this->users = new Users($this->site);
-        $user = $this->users->get($this->author);
-        $this->author = $user->getName();
+        $authorUser = new Users($this->site);
+        $authorUser = $authorUser->get($this->author);
+        $this->author = $authorUser->getName();
+        $this->author_id = $authorUser->getId();
 
         $this->setTitle($this->title);
 
@@ -62,7 +69,7 @@ class Doc extends View {
                 $this->addLink("./author.php", "Author");
             }
             $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
-            $this->addLink("./logout,php", "Log Out");
+            $this->addLink("post/logout.php", "Log Out");
         } else {
             $this->addLink("login.php", "Log In");
         }
@@ -76,38 +83,38 @@ class Doc extends View {
 <div class="head-link right">
 HTML;
 
-        if($this->mode == 'edit') {
-            $html .= '<p class="done-edit"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=view">Finish Editing</a></p>';
-        } else {
-            $html .= '<p class="edit-snippet"><a href="./doc.php?cat='.$this->cat.'&topic='.$this->topic.'&id='.$this->doc_id.'&mode=edit">Edit Snippet</a></p>';
+        if($this->author_id == $this->current_user_id) {
+            if ($this->mode == 'edit') {
+                $html .= '<p class="done-edit"><a href="./doc.php?cat=' . $this->cat . '&topic=' . $this->topic . '&id=' . $this->doc_id . '&mode=view">Finish Editing</a></p>';
+            } else {
+                $html .= '<p class="edit-snippet"><a href="./doc.php?cat=' . $this->cat . '&topic=' . $this->topic . '&id=' . $this->doc_id . '&mode=edit">Edit Snippet</a></p>';
+            }
         }
-
-        $user_id = $this->users->getIdByName($this->author)["id"];
 
         $html .= <<<HTML
 </div>
 <div class="info-wrapper">
     <ul class="doc-info">
        <li>Doc: #$this->doc_id</li>
-       <li>Author: <a href="./profile.php?id=$user_id&mode=view">$this->author</a></li>
+       <li>Author: <a href="./profile.php?id=$this->author_id&mode=view">$this->author</a></li>
        <li>Updated: $this->updated</li> 
     </ul>
 HTML;
 
-        if($this->mode == 'edit') {
+        if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
             $html .= '<ul class="tags edit">';
         } else {
             $html .= '<ul class="tags">';
         }
 
         foreach ($this->tags as $tag) {
-            if($this->mode == 'edit') {
+            if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
                 $html .= '<li class="'.$tag["id"].'" contenteditable="true">'.$tag["tag"].'</li>';
             }
             $html .= '<li class="'.$tag["id"].'">'.$tag["tag"].'</li>';
         }
 
-        if($this->mode == 'edit') {
+        if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
             $html .= '<li class="new-tag" contenteditable="true"></li>';
         }
 
@@ -121,17 +128,17 @@ HTML;
     public function doc(){
 
         echo $this->docHeader();
-        $editable = false;
-        $btn = $this->addSectionBtn();
+        $editable = true;
+        $btn = '';
 
-        if($this->mode == 'view') {
-            $editable = true;
-            $btn = '';
+        if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
+            $editable = false;
+            $btn = $this->addSectionBtn();
         }
 
         $html = '<div class="title-wrapper">';
 
-        if($this->mode == 'edit') {
+        if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
             $html .= '<h1 class="title edit" id="'.$this->doc_id.'" contenteditable="'.$editable.'">'.$this->title.'</h1></div>';
         } else {
             $html .= '<h1 class="title" id="'.$this->doc_id.'" contenteditable="'.$editable.'">'.$this->title.'</h1></div>';
@@ -141,7 +148,7 @@ HTML;
         foreach ($this->sections as $section) {
 
             $text = $section['text'];
-            if($this->mode == 'edit') {
+            if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
                 $html .= '<div class="section-wrapper edit">';
             } else {
                 $html .= '<div class="section-wrapper">';
@@ -153,7 +160,7 @@ HTML;
                 $html .= '<p id="' . $section["id"] . '" class="section" contenteditable="'.$editable.'">' . $text . '</p>';
             }
 
-            if($this->mode == 'edit') {
+            if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
                 $html .= '<button class="delete-section" id="'.$section["id"].'">Delete</button>';
                 $html .= '<p class="display-checkbox"><input type="checkbox" class="doc-display" id="'.$section["id"].'"></p>';
             }
