@@ -72,7 +72,7 @@ class Doc extends View {
             if($user->isAdmin()) {
                 $this->addLink("./admin.php", "Admin");
             }
-            if ($user->isStaff()) {
+            if ($user->isAuthor()) {
                 $this->addLink("./author.php", "Author");
             }
             $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
@@ -104,7 +104,7 @@ HTML;
     <ul class="doc-info">
        <li>Doc: #$this->doc_id</li>
        <li>Author: <a href="./profile.php?id=$this->author_id&mode=view">$this->author</a></li>
-       <li>Updated: $this->updated</li> 
+       <li>Updated: $this->updated</li>
     </ul>
 HTML;
 

@@ -45,7 +45,7 @@ class Profile extends View {
         $this->setTitle("Profile");
 
         if ($user != null) {
-            if($user->isStaff()) {
+            if($user->isAuthor()) {
                 $this->addLink("./author.php", "Author");
             }
             if($user->isAdmin()) {

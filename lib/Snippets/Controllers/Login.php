@@ -31,10 +31,10 @@ class Login extends Controller {
                 $this->result = json_encode(['ok' => false, 'message' => 'Invalid Password']);
             }
         } else {
-            if($user->isStaff()) {
-                $this->result = json_encode(['ok' => true, 'staff' => true]);
+            if($user->isAuthor()) {
+                $this->result = json_encode(['ok' => true, 'author' => true]);
             } else {
-                $this->result = json_encode(['ok' => true, 'staff' => false]);
+                $this->result = json_encode(['ok' => true, 'author' => false]);
             }
         }
 

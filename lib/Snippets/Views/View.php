@@ -12,7 +12,7 @@ class View {
     private $protectRedirect = null;
 
     public function protect(Site $site, $user) {
-        if($user->isStaff()) {
+        if($user->isAuthor()) {
             return true;
         }
 
