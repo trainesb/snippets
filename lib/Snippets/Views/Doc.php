@@ -53,7 +53,7 @@ class Doc extends View {
         $this->topic_id = $doc["topic_id"];
         $this->author = $doc["author"];
         $this->title = $doc["title"];
-        $this->updated = date("d-m-Y", strtotime($doc["updated"]));
+        $this->updated = date("m-d-Y", strtotime($doc["updated"]));
         $this->section_view = $this->doc->getSectionDisplay($this->doc_id);
 
         $this->tags = $this->tags->getByDocId($this->doc_id);
@@ -178,7 +178,7 @@ HTML;
             }
 
             if(($this->author_id == $this->current_user_id) and ($this->mode == 'edit')) {
-                $html .= '<button class="delete-section" id="'.$section["id"].'">Delete</button>';
+                $html .= '<button class="delete-section" id="'.$section["id"].'" name="'.$this->doc_id.'">Delete</button>';
 
                 if($this->section_view == $section["id"]) {
                     $html .= '<p class="display-checkbox"><input type="checkbox" class="doc-display" id="'.$section["id"].'" name="'.$this->doc_id.'" checked>Doc Preview</p>';

@@ -6,6 +6,7 @@ namespace View;
 use Table\Categories;
 use Table\Sections;
 use Table\Topics;
+use Table\Users;
 
 class Topic extends View {
 
@@ -13,6 +14,8 @@ class Topic extends View {
     private $categories;
     private $docs;
     private $sections;
+
+    private $user;
 
     private $site;
     private $topic;
@@ -22,6 +25,7 @@ class Topic extends View {
 
     public function __construct($site, $user) {
         $this->site = $site;
+        $this->user = $user;
 
         $this->topics = new Topics($this->site);
         $this->categories = new Categories($this->site);
@@ -44,7 +48,7 @@ class Topic extends View {
                 $this->addLink("./author.php", "Author");
             }
             $this->addLink("./profile.php?id=".$user->getId()."&mode=view", "Profile");
-            $this->addLink("./logout,php", "Log Out");
+            $this->addLink("post/logout.php", "Log Out");
         } else {
             $this->addLink("login.php", "Log In");
         }
@@ -77,10 +81,12 @@ HTML;
     }
 
     public function createDoc() {
-        if($this->topic_id) {
-            return <<<HTML
+        if($this->user != null) {
+            if (($this->topic_id) and ($this->user->isAdmin())) {
+                return <<<HTML
 <button class="create-doc" name="$this->topic_id" value="$this->topic" id="$this->category">Create Document</button>
 HTML;
+            }
         }
         return null;
     }
@@ -93,10 +99,16 @@ HTML;
         foreach ($docs as $doc) {
             $doc_id = $doc['id'];
             $title = $doc['title'];
+            $author_id = $doc['author'];
+            $users = new Users($this->site);
+            $author = $users->get($author_id)->getName();
+            $updated = date('m-d-Y', strtotime($doc['updated']));
             $html .= <<<HTML
-<div class="doc-head">
-    <p><a href="./doc.php?cat=$this->category&topic=$this->topic&id=$doc_id&mode=view">$title</a></p>
-</div>
+<ul class="doc-head">
+    <li><a href="./doc.php?cat=$this->category&topic=$this->topic&id=$doc_id&mode=view">$title</a></li>
+    <li>Author: <a href="./profile.php?id=$author_id&mode=view">$author</a></li>
+    <li>Last Updated: $updated</li> 
+</ul>
 HTML;
             //    <button class="delete-doc" id='$doc_id' name='$title'><i class='fa fa-trash' aria-hidden='true'></i></button>
             $section = $this->docs->getSectionDisplay($doc["id"]);

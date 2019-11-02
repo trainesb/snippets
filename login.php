@@ -11,13 +11,8 @@ $view = new View\Login($site, $_COOKIE);
 </head>
 
 <body>
-<div class="login">
-    <?php
-    echo $view->nav();
-    echo $view->presentForm();
-    echo $view->footer();
-    ?>
-</div>
+<div class="login" id="login">
 
+</div>
 </body>
 </html>

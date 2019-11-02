@@ -10,7 +10,7 @@ class Login extends View {
 
 
     public function __construct(Site $site, $cookie){
-        $this->setTitle("Login");
+        $this->setTitle("LoginForm");
 
         if(isset($cookie[LOGIN_COOKIE]) && $cookie[LOGIN_COOKIE] != "") {
             $cookie = json_decode($cookie[LOGIN_COOKIE], true);
@@ -29,7 +29,7 @@ class Login extends View {
         return <<<HTML
 <form id="login" method="post" action="post/login.php">
     <fieldset>
-        <legend>Login</legend>
+        <legend>LoginForm</legend>
 
         <p><label for="email">Email</label><br>
         <input type="email" id="email" name="email" minlength="8" placeholder="Email" autocomplete="Email" required></p>
@@ -43,7 +43,6 @@ class Login extends View {
         <p><input type="submit" value="Log in"></p>
         <p><a href="">Lost Password</a></p>
 
-        <p><a href="..">BT Glass Home</a></p>
         <p><a href="./register.php">Register</a></p>
     </fieldset>
     

@@ -1,6 +1,7 @@
 // webpack.config.js
 const path = require( 'path' );
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     context: __dirname,
@@ -17,7 +18,17 @@ module.exports = {
               to: 'img',
               flatten: true
           }
-      ])
+      ]),
+        new HtmlWebPackPlugin([{
+            template: "./src/html/index.html",
+            filename: "./index.html",
+            inject: true
+        }]),
+        new HtmlWebPackPlugin([{
+            template: "./src/html/login.html",
+            filename: "./login.html",
+            inject: true
+        }])
     ],
     module: {
         rules: [
@@ -28,6 +39,21 @@ module.exports = {
                     'css-loader',
                     'resolve-url-loader',
                     'sass-loader?sourceMap'
+                ]
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader"
+                    }
                 ]
             }
         ]
