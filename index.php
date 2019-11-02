@@ -17,6 +17,8 @@ $view = new View\Home($site, $user);
     echo $view->nav();
     echo $view->present();
     ?>
+
+    <div id="react-test"></div>
 </div>
 </body>
 </html>

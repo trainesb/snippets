@@ -17,7 +17,7 @@ module.exports = {
               to: 'img',
               flatten: true
           }
-      ])
+      ]),
     ],
     module: {
         rules: [
@@ -29,6 +29,13 @@ module.exports = {
                     'resolve-url-loader',
                     'sass-loader?sourceMap'
                 ]
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
             }
         ]
     }
