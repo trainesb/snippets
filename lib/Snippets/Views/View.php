@@ -42,8 +42,8 @@ class View {
 <meta charset="utf-8">
 <title>$this->title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="dist/main.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="dist/main.js"></script>
 HTML;
     }
 

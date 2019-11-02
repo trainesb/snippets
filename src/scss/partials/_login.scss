@@ -1,0 +1,11 @@
+div#login-react-form {
+  text-align: center;
+
+  form#login-form {
+    display: inline-block;
+
+    div.form-group input.form-control {
+      margin: 1em 2em;
+    }
+  }
+}

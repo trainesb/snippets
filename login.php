@@ -12,12 +12,14 @@ $view = new View\Login($site, $_COOKIE);
 
 <body>
 <div class="login">
+    <?php echo $view->nav(); ?>
+
+    <div id="login-react-form"></div>
+
     <?php
-    echo $view->nav();
-    echo $view->presentForm();
-    echo $view->footer();
+    //echo $view->presentForm();
+    //echo $view->footer();
     ?>
 </div>
-
 </body>
 </html>

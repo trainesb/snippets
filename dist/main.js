@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\n  background-color: #bbb;\n  color: black; }\n\nh1, h2 {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n\nbody > div {\n  background-color: white;\n  max-width: 60em;\n  min-width: 40em;\n  margin: 0 auto; }\n\np {\n  margin: 1em 2em; }\n\na:visited, a:link {\n  color: #88f; }\n\n.center {\n  text-align: center; }\n\n.right {\n  text-align: right; }\n\nnav {\n  position: relative;\n  background-color: #18453B;\n  color: white;\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n  nav ul {\n    font-size: 1.2em;\n    list-style: none;\n    margin: 0;\n    padding: 0; }\n    nav ul li {\n      display: inline-block; }\n    nav ul li a {\n      display: block;\n      padding: 0.5em 0.5em; }\n    nav ul a:hover {\n      background-color: green; }\n    nav ul a:visited, nav ul a:link {\n      color: white;\n      text-decoration: none; }\n  nav ul.right {\n    position: absolute;\n    right: 0;\n    top: 0; }\n\ndiv.column {\n  display: inline-block;\n  vertical-align: top; }\n\nheader {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\n  padding: 1em 0; }\n  header h1 {\n    font-size: 3em;\n    text-align: center; }\n    header h1 img {\n      width: 2.12em;\n      height: 2em;\n      vertical-align: middle; }\n  header p {\n    font-size: 1.2em;\n    margin: 1em 5em;\n    text-align: center;\n    position: relative; }\n\nfooter {\n  background-color: #18453B;\n  color: white;\n  text-align: center; }\n  footer p {\n    padding: 0.25em 0;\n    margin-top: 0; }\n\ndiv.home header a {\n  padding: 0.5em;\n  background-color: #4c4;\n  text-decoration: none;\n  color: white;\n  transition: all 0.1s;\n  -webkit-transition: all 0.1s;\n  position: relative;\n  padding: 0.5em 2em;\n  border-radius: 0.4em;\n  border-bottom: 5px solid #262;\n  text-shadow: 0px 2px #262; }\n\ndiv.home div.category-container {\n  text-align: center; }\n  div.home div.category-container div.category-list {\n    vertical-align: top;\n    display: inline-block; }\n    div.home div.category-container div.category-list ul {\n      list-style-type: none; }\n\ntable {\n  margin-left: auto;\n  margin-right: auto;\n  -moz-box-shadow: 6pt 6px 10pt #888;\n  -webkit-box-shadow: 6pt 6px 10pt #888;\n  box-shadow: 6pt 6px 10pt #888;\n  border-left: 1px solid #e0e0e0;\n  border-collapse: collapse; }\n\ntable th {\n  color: white;\n  background-color: #18453B;\n  background: -webkit-gradient(linear, left top, left bottom, from(#18453B), to(#73d189));\n  background: -webkit-linear-gradient(top, #18453B, #73d189);\n  background: -moz-linear-gradient(top, #18453B, #73d189);\n  background: -ms-linear-gradient(top, #18453B, #73d189);\n  background: -o-linear-gradient(top, #18453B, #73d189);\n  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  border-top: 1px solid #C1DAD7;\n  text-align: left;\n  font-family: Helvetica, Arial, Sans-Serif;\n  text-decoration: none;\n  padding: 0.1em 0.5em; }\n\ntable td {\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  background: white;\n  padding: 0.1em 0.5em;\n  color: #4f6b72; }\n\nth a:link {\n  color: #F5F3EB; }\n\nth a:visited {\n  color: #E3DCC5; }\n\nth a:hover {\n  color: #ffffff; }\n\ndiv.topic div.topic-head {\n  position: relative; }\n  div.topic div.topic-head button.create-doc {\n    position: absolute;\n    right: 7em;\n    top: 0; }\n\ndiv.topic div.docs {\n  width: 75%; }\n\ndiv.topic div.container ul.doc-head {\n  list-style-type: none;\n  margin: 0 2em;\n  padding: 0 0.5em; }\n  div.topic div.container ul.doc-head li {\n    display: inline-block;\n    width: 32%; }\n\ndiv.topic div.container p.section {\n  margin: 1em 2em;\n  min-height: 3em;\n  padding: 0.5em;\n  border: thin solid rebeccapurple;\n  text-align: center; }\n\ndiv.topic div.container pre.section {\n  margin: 1em 2em;\n  border: thin solid rebeccapurple;\n  text-align: center; }\n  div.topic div.container pre.section code {\n    min-height: 3em;\n    background-color: #eee;\n    display: block;\n    padding: 0.5em; }\n\ndiv.topic div.sideNav {\n  width: 15%;\n  padding-top: 4em; }\n  div.topic div.sideNav div.category-list ul {\n    list-style-type: none;\n    padding-left: 1em; }\n    div.topic div.sideNav div.category-list ul li ul {\n      padding-left: 0.5em; }\n\ndiv.doc div.head-link {\n  display: inline-block;\n  width: 49%; }\n\ndiv.doc div.info-wrapper ul.doc-info, div.doc div.info-wrapper ul.tags {\n  list-style-type: none;\n  text-align: center;\n  padding: 0; }\n  div.doc div.info-wrapper ul.doc-info li, div.doc div.info-wrapper ul.tags li {\n    display: inline-block;\n    width: 33%; }\n\ndiv.doc div.info-wrapper ul.tags.edit li {\n  border: thin solid rebeccapurple; }\n\ndiv.doc div.section-view-wrapper {\n  margin: 1em 10em;\n  border: thin solid rebeccapurple;\n  text-align: center; }\n  div.doc div.section-view-wrapper p.section {\n    margin: 0;\n    min-height: 5em;\n    padding: 1em 2em; }\n  div.doc div.section-view-wrapper pre.section {\n    margin: 0; }\n    div.doc div.section-view-wrapper pre.section code {\n      min-height: 5em;\n      background-color: #eee;\n      display: block;\n      padding: 1em 2em; }\n\ndiv.doc div.title-wrapper {\n  text-align: center; }\n  div.doc div.title-wrapper h1.title {\n    display: inline-block;\n    padding: 0 2em; }\n  div.doc div.title-wrapper h1.title.edit {\n    border: thin solid rebeccapurple; }\n\ndiv.doc div.sections-wrapper {\n  margin: 1em 2em;\n  border: thin solid rebeccapurple; }\n  div.doc div.sections-wrapper div.section-wrapper p.section {\n    margin: 0;\n    min-height: 5em;\n    padding: 1em 2em; }\n  div.doc div.sections-wrapper div.section-wrapper pre.section {\n    margin: 0; }\n    div.doc div.sections-wrapper div.section-wrapper pre.section code {\n      min-height: 5em;\n      background-color: #eee;\n      display: block;\n      padding: 1em 2em; }\n  div.doc div.sections-wrapper div.section-wrapper.edit {\n    position: relative; }\n    div.doc div.sections-wrapper div.section-wrapper.edit p.section {\n      margin: 1em 2em;\n      border: thin solid rebeccapurple; }\n    div.doc div.sections-wrapper div.section-wrapper.edit pre.section code {\n      margin: 1em 2.5em;\n      border: thin solid rebeccapurple; }\n    div.doc div.sections-wrapper div.section-wrapper.edit button.delete-section {\n      position: absolute;\n      top: 0;\n      right: 2.5em; }\n    div.doc div.sections-wrapper div.section-wrapper.edit p.display-checkbox {\n      display: inline-block;\n      position: absolute;\n      top: 0;\n      right: 6em;\n      margin: 0; }\n\ndiv.doc div.edit-section-btn {\n  text-align: center; }\n\ndiv.admin div.admin-wrapper div.left {\n  display: inline-block;\n  width: 49%; }\n\ndiv.admin div.admin-wrapper div.right {\n  display: inline-block;\n  width: 50%; }\n\ndiv.profile {\n  text-align: center; }\n  div.profile div.userCard {\n    background-color: skyblue;\n    border: solid;\n    display: inline-block;\n    text-align: left; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #bbb;\n  color: black; }\n\nh1, h2 {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n\nbody > div {\n  background-color: white;\n  max-width: 60em;\n  min-width: 40em;\n  margin: 0 auto; }\n\np {\n  margin: 1em 2em; }\n\na:visited, a:link {\n  color: #88f; }\n\n.center {\n  text-align: center; }\n\n.right {\n  text-align: right; }\n\nnav {\n  position: relative;\n  background-color: #18453B;\n  color: white;\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; }\n  nav ul {\n    font-size: 1.2em;\n    list-style: none;\n    margin: 0;\n    padding: 0; }\n    nav ul li {\n      display: inline-block; }\n    nav ul li a {\n      display: block;\n      padding: 0.5em 0.5em; }\n    nav ul a:hover {\n      background-color: green; }\n    nav ul a:visited, nav ul a:link {\n      color: white;\n      text-decoration: none; }\n  nav ul.right {\n    position: absolute;\n    right: 0;\n    top: 0; }\n\ndiv.column {\n  display: inline-block;\n  vertical-align: top; }\n\nheader {\n  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\n  padding: 1em 0; }\n  header h1 {\n    font-size: 3em;\n    text-align: center; }\n    header h1 img {\n      width: 2.12em;\n      height: 2em;\n      vertical-align: middle; }\n  header p {\n    font-size: 1.2em;\n    margin: 1em 5em;\n    text-align: center;\n    position: relative; }\n\nfooter {\n  background-color: #18453B;\n  color: white;\n  text-align: center; }\n  footer p {\n    padding: 0.25em 0;\n    margin-top: 0; }\n\ndiv.home header a {\n  padding: 0.5em;\n  background-color: #4c4;\n  text-decoration: none;\n  color: white;\n  transition: all 0.1s;\n  -webkit-transition: all 0.1s;\n  position: relative;\n  padding: 0.5em 2em;\n  border-radius: 0.4em;\n  border-bottom: 5px solid #262;\n  text-shadow: 0px 2px #262; }\n\ndiv.home div.category-container {\n  text-align: center; }\n  div.home div.category-container div.category-list {\n    vertical-align: top;\n    display: inline-block; }\n    div.home div.category-container div.category-list ul {\n      list-style-type: none; }\n\ntable {\n  margin-left: auto;\n  margin-right: auto;\n  -moz-box-shadow: 6pt 6px 10pt #888;\n  -webkit-box-shadow: 6pt 6px 10pt #888;\n  box-shadow: 6pt 6px 10pt #888;\n  border-left: 1px solid #e0e0e0;\n  border-collapse: collapse; }\n\ntable th {\n  color: white;\n  background-color: #18453B;\n  background: -webkit-gradient(linear, left top, left bottom, from(#18453B), to(#73d189));\n  background: -webkit-linear-gradient(top, #18453B, #73d189);\n  background: -moz-linear-gradient(top, #18453B, #73d189);\n  background: -ms-linear-gradient(top, #18453B, #73d189);\n  background: -o-linear-gradient(top, #18453B, #73d189);\n  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  border-top: 1px solid #C1DAD7;\n  text-align: left;\n  font-family: Helvetica, Arial, Sans-Serif;\n  text-decoration: none;\n  padding: 0.1em 0.5em; }\n\ntable td {\n  border-right: 1px solid #C1DAD7;\n  border-bottom: 1px solid #C1DAD7;\n  background: white;\n  padding: 0.1em 0.5em;\n  color: #4f6b72; }\n\nth a:link {\n  color: #F5F3EB; }\n\nth a:visited {\n  color: #E3DCC5; }\n\nth a:hover {\n  color: #ffffff; }\n\ndiv.topic div.topic-head {\n  position: relative; }\n  div.topic div.topic-head button.create-doc {\n    position: absolute;\n    right: 7em;\n    top: 0; }\n\ndiv.topic div.docs {\n  width: 75%; }\n\ndiv.topic div.container ul.doc-head {\n  list-style-type: none;\n  margin: 0 2em;\n  padding: 0 0.5em; }\n  div.topic div.container ul.doc-head li {\n    display: inline-block;\n    width: 32%; }\n\ndiv.topic div.container p.section {\n  margin: 1em 2em;\n  min-height: 3em;\n  padding: 0.5em;\n  border: thin solid rebeccapurple;\n  text-align: center; }\n\ndiv.topic div.container pre.section {\n  margin: 1em 2em;\n  border: thin solid rebeccapurple;\n  text-align: center; }\n  div.topic div.container pre.section code {\n    min-height: 3em;\n    background-color: #eee;\n    display: block;\n    padding: 0.5em; }\n\ndiv.topic div.sideNav {\n  width: 15%;\n  padding-top: 4em; }\n  div.topic div.sideNav div.category-list ul {\n    list-style-type: none;\n    padding-left: 1em; }\n    div.topic div.sideNav div.category-list ul li ul {\n      padding-left: 0.5em; }\n\ndiv.doc div.head-link {\n  display: inline-block;\n  width: 49%; }\n\ndiv.doc div.info-wrapper ul.doc-info, div.doc div.info-wrapper ul.tags {\n  list-style-type: none;\n  text-align: center;\n  padding: 0; }\n  div.doc div.info-wrapper ul.doc-info li, div.doc div.info-wrapper ul.tags li {\n    display: inline-block;\n    width: 33%; }\n\ndiv.doc div.info-wrapper ul.tags.edit li {\n  border: thin solid rebeccapurple; }\n\ndiv.doc div.section-view-wrapper {\n  margin: 1em 10em;\n  border: thin solid rebeccapurple;\n  text-align: center; }\n  div.doc div.section-view-wrapper p.section {\n    margin: 0;\n    min-height: 5em;\n    padding: 1em 2em; }\n  div.doc div.section-view-wrapper pre.section {\n    margin: 0; }\n    div.doc div.section-view-wrapper pre.section code {\n      min-height: 5em;\n      background-color: #eee;\n      display: block;\n      padding: 1em 2em; }\n\ndiv.doc div.title-wrapper {\n  text-align: center; }\n  div.doc div.title-wrapper h1.title {\n    display: inline-block;\n    padding: 0 2em; }\n  div.doc div.title-wrapper h1.title.edit {\n    border: thin solid rebeccapurple; }\n\ndiv.doc div.sections-wrapper {\n  margin: 1em 2em;\n  border: thin solid rebeccapurple; }\n  div.doc div.sections-wrapper div.section-wrapper p.section {\n    margin: 0;\n    min-height: 5em;\n    padding: 1em 2em; }\n  div.doc div.sections-wrapper div.section-wrapper pre.section {\n    margin: 0; }\n    div.doc div.sections-wrapper div.section-wrapper pre.section code {\n      min-height: 5em;\n      background-color: #eee;\n      display: block;\n      padding: 1em 2em; }\n  div.doc div.sections-wrapper div.section-wrapper.edit {\n    position: relative; }\n    div.doc div.sections-wrapper div.section-wrapper.edit p.section {\n      margin: 1em 2em;\n      border: thin solid rebeccapurple; }\n    div.doc div.sections-wrapper div.section-wrapper.edit pre.section code {\n      margin: 1em 2.5em;\n      border: thin solid rebeccapurple; }\n    div.doc div.sections-wrapper div.section-wrapper.edit button.delete-section {\n      position: absolute;\n      top: 0;\n      right: 2.5em; }\n    div.doc div.sections-wrapper div.section-wrapper.edit p.display-checkbox {\n      display: inline-block;\n      position: absolute;\n      top: 0;\n      right: 6em;\n      margin: 0; }\n\ndiv.doc div.edit-section-btn {\n  text-align: center; }\n\ndiv.admin div.admin-wrapper div.left {\n  display: inline-block;\n  width: 49%; }\n\ndiv.admin div.admin-wrapper div.right {\n  display: inline-block;\n  width: 50%; }\n\ndiv.profile {\n  text-align: center; }\n  div.profile div.userCard {\n    background-color: skyblue;\n    border: solid;\n    display: inline-block;\n    text-align: left; }\n\ndiv#login-react-form {\n  text-align: center; }\n  div#login-react-form form#login-form {\n    display: inline-block; }\n    div#login-react-form form#login-form div.form-group input.form-control {\n      margin: 1em 2em; }\n", ""]);
 
 
 /***/ }),
@@ -44135,51 +44135,6 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ "./src/js/Login.js":
-/*!*************************!*\
-  !*** ./src/js/Login.js ***!
-  \*************************/
-/*! exports provided: Login */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _parse_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse_json */ "./src/js/parse_json.js");
-
-
-var Login = function Login() {
-  var form = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#login");
-  form.submit(function (event) {
-    event.preventDefault();
-    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-      url: "post/login.php",
-      data: form.serialize(),
-      method: "POST",
-      success: function success(data) {
-        var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_1__["parse_json"])(data);
-
-        if (json.ok) {
-          if (json.staff) {
-            window.location.assign("./author.php");
-          } else {
-            window.location.assign('./');
-          }
-        } else {
-          alert(json.message);
-        }
-      },
-      error: function error(xhr, status, _error) {
-        alert("Error: " + _error);
-      }
-    });
-  });
-};
-
-/***/ }),
-
 /***/ "./src/js/Topic.js":
 /*!*************************!*\
   !*** ./src/js/Topic.js ***!
@@ -44250,10 +44205,10 @@ var Topic = function Topic() {
 
 /***/ }),
 
-/***/ "./src/js/components/container/Form.jsx":
-/*!**********************************************!*\
-  !*** ./src/js/components/container/Form.jsx ***!
-  \**********************************************/
+/***/ "./src/js/components/container/Login.jsx":
+/*!***********************************************!*\
+  !*** ./src/js/components/container/Login.jsx ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -44261,7 +44216,12 @@ var Topic = function Topic() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _presentational_Input_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../presentational/Input.jsx */ "./src/js/components/presentational/Input.jsx");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _parse_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../parse_json */ "./src/js/parse_json.js");
+/* harmony import */ var _presentational_Input_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../presentational/Input.jsx */ "./src/js/components/presentational/Input.jsx");
+/* harmony import */ var _presentational_Link_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../presentational/Link.jsx */ "./src/js/components/presentational/Link.jsx");
+/* harmony import */ var _presentational_Footer_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../presentational/Footer.jsx */ "./src/js/components/presentational/Footer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -44285,50 +44245,148 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Form =
+
+
+
+
+var Login =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Form, _Component);
+  _inherits(Login, _Component);
 
-  function Form() {
+  function Login(props) {
     var _this;
 
-    _classCallCheck(this, Form);
+    _classCallCheck(this, Login);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Form).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
     _this.state = {
-      seo_title: ""
+      email: "",
+      password: "",
+      error: null
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Form, [{
+  _createClass(Login, [{
     key: "handleChange",
     value: function handleChange(event) {
       this.setState(_defineProperty({}, event.target.id, event.target.value));
+      console.log(this.state);
+    }
+  }, {
+    key: "handleFormSubmit",
+    value: function handleFormSubmit(event) {
+      event.preventDefault();
+      console.log(this.state);
+      var state = this;
+      jquery__WEBPACK_IMPORTED_MODULE_1___default.a.ajax({
+        url: "post/login.php",
+        data: this.state,
+        method: "POST",
+        success: function success(data) {
+          var json = Object(_parse_json__WEBPACK_IMPORTED_MODULE_2__["parse_json"])(data);
+
+          if (json.ok) {
+            if (json.staff) {
+              window.location.assign("./author.php");
+            } else {
+              window.location.assign('./');
+            }
+          } else {
+            state.setState({
+              error: json.message
+            });
+            alert(state.state.error);
+          }
+        },
+        error: function error(xhr, status, _error) {
+          alert("Error: " + _error);
+        }
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var seo_title = this.state.seo_title;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        id: "article-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Input_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        text: "SEO title",
-        label: "seo_title",
-        type: "text",
-        id: "seo_title",
-        value: seo_title,
+      var _this2 = this;
+
+      var _this$state = this.state,
+          email = _this$state.email,
+          password = _this$state.password;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "login-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Input_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        text: "Email",
+        label: "email",
+        type: "email",
+        id: "email",
+        value: email,
+        handleChange: this.handleChange,
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Input_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        text: "Password",
+        label: "password",
+        type: "password",
+        id: "password",
+        value: password,
+        handleChange: this.handleChange,
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Input_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        text: "Stay Logged In?",
+        label: "cookie",
+        type: "checkbox",
+        id: "cookie",
+        value: "false",
         handleChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(e) {
+          return _this2.handleFormSubmit(e);
+        }
+      }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Link_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        link: "",
+        text: "Lost Password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Link_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        link: "",
+        text: "Register"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Footer_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        companyName: "BT"
       }));
     }
   }]);
 
-  return Form;
+  return Login;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Form);
+/* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./src/js/components/presentational/Footer.jsx":
+/*!*****************************************************!*\
+  !*** ./src/js/components/presentational/Footer.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Footer = function Footer(_ref) {
+  var companyName = _ref.companyName;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Copyright \xA9 2019 ", companyName, ". All Rights Reserved."));
+};
+
+Footer.prototype = {
+  companyName: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
@@ -44364,8 +44422,7 @@ var Input = function Input(_ref) {
     className: "form-control",
     id: id,
     value: value,
-    onChange: handleChange,
-    required: true
+    onChange: handleChange
   }));
 };
 
@@ -44381,6 +44438,41 @@ Input.propTypes = {
 
 /***/ }),
 
+/***/ "./src/js/components/presentational/Link.jsx":
+/*!***************************************************!*\
+  !*** ./src/js/components/presentational/Link.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Link = function Link(_ref) {
+  var link = _ref.link,
+      text = _ref.text;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "link-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "link-control",
+    href: link
+  }, text));
+};
+
+Link.propTypes = {
+  link: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+  text: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Link);
+
+/***/ }),
+
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -44392,18 +44484,17 @@ Input.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_container_Form_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/container/Form.jsx */ "./src/js/components/container/Form.jsx");
-/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Login */ "./src/js/Login.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Home */ "./src/js/Home.js");
 /* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Admin */ "./src/js/Admin.js");
 /* harmony import */ var _Topic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Topic */ "./src/js/Topic.js");
 /* harmony import */ var _Doc__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Doc */ "./src/js/Doc.js");
-/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../scss/app.scss */ "./src/scss/app.scss");
-/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_scss_app_scss__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_container_Login_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/container/Login.jsx */ "./src/js/components/container/Login.jsx");
+/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../scss/app.scss */ "./src/scss/app.scss");
+/* harmony import */ var _scss_app_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_scss_app_scss__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -44411,12 +44502,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ //import Footer from "./components/presentational/Footer.jsx";
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  react_dom__WEBPACK_IMPORTED_MODULE_8___default.a.render(react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_container_Form_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), document.getElementById("react-test"));
-  new _Login__WEBPACK_IMPORTED_MODULE_2__["Login"]();
+  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_container_Login_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById('login-react-form'));
   new _Doc__WEBPACK_IMPORTED_MODULE_6__["Doc"]();
   new _Admin__WEBPACK_IMPORTED_MODULE_4__["Admin"]();
   new _Topic__WEBPACK_IMPORTED_MODULE_5__["Topic"]();
