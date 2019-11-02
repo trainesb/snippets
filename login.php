@@ -11,15 +11,8 @@ $view = new View\Login($site, $_COOKIE);
 </head>
 
 <body>
-<div class="login">
-    <?php echo $view->nav(); ?>
+<div class="login" id="login">
 
-    <div id="login-react-form"></div>
-
-    <?php
-    //echo $view->presentForm();
-    //echo $view->footer();
-    ?>
 </div>
 </body>
 </html>

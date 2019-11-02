@@ -53,7 +53,7 @@ class Profile extends View {
             }
             $this->addLink("post/logout.php", "Log Out");
         } else {
-            $this->addLink("./login.php", "Login");
+            $this->addLink("./login.php", "LoginForm");
         }
     }
 

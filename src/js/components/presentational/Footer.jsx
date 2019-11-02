@@ -1,14 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-const Footer = ({ companyName }) => (
+const Footer = () => (
   <footer>
-      <p>Copyright © 2019 {companyName}. All Rights Reserved.</p>
+      <p>Copyright © 2019 BT's Black Book. All Rights Reserved.</p>
   </footer>
 );
-
-Footer.prototype = {
-    companyName: PropTypes.string.isRequired
-};
 
 export default Footer;

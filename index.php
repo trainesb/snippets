@@ -12,13 +12,8 @@ $view = new View\Home($site, $user);
 </head>
 
 <body>
-<div class="home">
-    <?php
-    echo $view->nav();
-    echo $view->present();
-    ?>
+<div id="home" class="home">
 
-    <div id="react-test"></div>
 </div>
 </body>
 </html>
