@@ -34,6 +34,7 @@ div.doc {
       margin: 0;
       min-height: 5em;
       padding: 1em 2em;
+      word-wrap: break-word;
     }
 
     pre.section {
@@ -44,6 +45,7 @@ div.doc {
         background-color: #eee;
         display: block;
         padding: 1em 2em;
+        overflow: hidden;
       }
     }
   }

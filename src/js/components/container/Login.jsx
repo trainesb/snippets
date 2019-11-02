@@ -7,6 +7,7 @@ import Link from "../presentational/Link.jsx";
 import Footer from "../presentational/Footer.jsx";
 
 class Login extends Component {
+
     constructor(props) {
         super(props);
 
@@ -28,30 +29,27 @@ class Login extends Component {
     handleFormSubmit( event ) {
         event.preventDefault();
 
-        console.log(this.state);
-        var state = this;
+        var self = this;
 
-        $.ajax({
-            url: "post/login.php",
-            data: this.state,
-            method: "POST",
-            success: function(data) {
-                var json = parse_json(data);
-                if(json.ok) {
-                    if(json.staff) {
-                        window.location.assign("./author.php");
-                    } else {
-                        window.location.assign('./');
-                    }
+        fetch('post/login.php', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(self.state),
+            })
+            .then((response) => response.json())
+            .then((responseJson) => {
+
+                console.log(responseJson);
+
+                if(responseJson.ok) {
+                    window.location.assign('./');
                 } else {
-                    state.setState({ error: json.message});
-                    alert(state.state.error);
+                    alert("Invalid Login");
                 }
-            },
-            error: function(xhr, status, error) {
-                alert("Error: " + error);
-            }
-        });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     render() {

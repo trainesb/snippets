@@ -13,14 +13,17 @@ class Login extends Controller {
 
     private $redirect;	// Page we will redirect the user to.
 
-    public function __construct(Site $site, array &$session, array $post) {
+    public function __construct(Site $site, array &$session) {
         parent::__construct($site);
+
+        $request_body = file_get_contents('php://input');
+        $post = json_decode($request_body);
 
         // Create a Users object to access the table
         $users = new Users($site);
 
-        $email = strip_tags($post['email']);
-        $password = strip_tags($post['password']);
+        $email = strip_tags($post->email);
+        $password = strip_tags($post->password);
         $user = $users->login($email, $password);
         $session[User::SESSION_NAME] = $user;
 
@@ -38,7 +41,7 @@ class Login extends Controller {
             }
         }
 
-        if(isset($post['keep'])) {
+        if(isset($post->keep)) {
             $cookies = new Cookies($site);
             $token = $cookies->create($user);
             $expire = time() + (86400 * 365); // 86400 = 1 day
