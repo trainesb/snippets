@@ -10,7 +10,8 @@ class Home extends Component {
     render() {
         const navLinks = [
             {id: 1, text: "Admin", link: "./admin.php"},
-            {id: 2, text: "Profile", link: "./profile.php"}
+            {id: 2, text: "Profile", link: "./profile.php"},
+            {id: 3, text: "Logout", link: "post/logout.php"}
         ];
 
         return(

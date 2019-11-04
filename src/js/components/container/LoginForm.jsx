@@ -11,7 +11,7 @@ class LoginForm extends Component {
         this.state = {
             email: "",
             password: "",
-            error: null,
+            error: null
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -19,12 +19,11 @@ class LoginForm extends Component {
 
     handleChange(event) {
         this.setState({ [event.target.id]: event.target.value });
-
-        console.log(this.state);
     }
 
     handleFormSubmit( event ) {
         event.preventDefault();
+
 
         fetch('post/login.php', {
                 method: 'POST',
@@ -34,10 +33,11 @@ class LoginForm extends Component {
             .then((response) => response.json())
             .then((responseJson) => {
 
-                console.log(responseJson);
-
                 if(responseJson.ok) {
-                    window.location.assign('./');
+
+                    this.props.setLogin(true);
+                    this.props.changeView('home');
+
                 } else {
                     alert("Invalid LoginForm");
                 }

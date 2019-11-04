@@ -8,21 +8,14 @@ import {Topic} from "./Topic";
 import {Doc} from "./Doc";
 
 import '../scss/app.scss';
-import Login from "./components/view/Login.jsx";
-import Home from "./components/view/Home.jsx";
+import App from "./components/App";
 
 
 $(document).ready(function () {
 
 
-    const target = document.getElementById('login');
-    target ? ReactDOM.render(<Login />, target) : false;
-
-
-    const tar = document.getElementById('home');
-    tar ? ReactDOM.render(<Home />, tar) : false;
-
-
+    const target = document.getElementById('root');
+    target ? ReactDOM.render(<App />, target) : false;
 
     new Doc();
     new Admin();
