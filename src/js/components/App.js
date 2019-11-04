@@ -28,7 +28,7 @@ class App extends Component {
     render() {
 
         if(this.state.view === 'login') {
-            return(<Login setLogin={this.setLogin} changeView={this.changeView}/>)
+            return(<Login login={this.props.login} setLogin={this.setLogin} changeView={this.changeView}/>)
         }
         if(this.state.view === 'home') {
             return(<Home />)

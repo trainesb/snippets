@@ -21,13 +21,11 @@ module.exports = {
       ]),
         new HtmlWebPackPlugin([{
             template: "./src/html/index.html",
-            filename: "./index.html",
-            inject: true
+            filename: "./index.html"
         }]),
         new HtmlWebPackPlugin([{
             template: "./src/html/login.html",
-            filename: "./login.html",
-            inject: true
+            filename: "./login.html"
         }])
     ],
     module: {
