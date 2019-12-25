@@ -35,7 +35,9 @@ class LoginForm extends Component {
 
                 if(responseJson.ok) {
                     console.log(responseJson);
-                    window.location = '/snippets/';
+                    this.props.setLogin(true);
+                    this.props.setView('home');
+                    //window.location = '/snippets/';
                 } else {
                     alert("Invalid LoginForm");
                 }

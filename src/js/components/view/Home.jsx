@@ -7,6 +7,16 @@ import Footer from "../presentational/Footer.jsx";
 
 class Home extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.setView = this.setView.bind(this);
+    }
+
+    setView(view) {
+        this.props.setView(view);
+    }
+
     render() {
         const navLinks = [
             {id: 1, text: "Admin", link: "./admin.php"},
@@ -17,7 +27,7 @@ class Home extends Component {
 
         return(
             <Fragment>
-                <Nav navLinks={navLinks}/>
+                <Nav navLinks={navLinks} />
                 <Header title="Home" />
                 <Footer/>
             </Fragment>
