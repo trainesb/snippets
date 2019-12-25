@@ -16,7 +16,7 @@ require 'lib/site.inc.php';
 </head>
 
 <body>
-<div id="root" class="home">
+<div id="home" class="home">
 
 </div>
 </body>

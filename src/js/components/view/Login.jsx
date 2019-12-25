@@ -9,22 +9,12 @@ import Link from "../presentational/Link.jsx";
 
 class Login extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.setLogin = this.setLogin.bind(this);
-    }
-
-    setLogin(bool) {
-        this.props.setLogin(bool);
-    }
-
     renderLogin(navLinks) {
         return (
             <Fragment>
                 <Nav navLinks={navLinks} />
                 <Header title="Login"/>
-                <LoginForm setLogin={this.setLogin}  changeView={this.props.changeView}/>
+                <LoginForm />
                 <Footer />
             </Fragment>
         );
