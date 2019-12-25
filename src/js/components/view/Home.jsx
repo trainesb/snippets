@@ -11,7 +11,11 @@ class Home extends Component {
         const navLinks = [
             {id: 1, text: "Admin", link: "./admin.php"},
             {id: 2, text: "Profile", link: "./profile.php"},
+<<<<<<< HEAD
             {id: 3, text: "Login", link: "./login.php"}
+=======
+            {id: 3, text: "Logout", link: "post/logout.php"}
+>>>>>>> d3e4bda2a4d7a4f07d52a86fa6a31d9acfa4a972
         ];
 
         return(
