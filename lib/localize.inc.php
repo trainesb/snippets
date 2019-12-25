@@ -6,5 +6,5 @@ return function (Snippets\Site $site) {
     date_default_timezone_set('America/Detroit');
     $site->setEmail('trainesben68@gmail.com');
     $site->setRoot('/snippets');
-    $site->dbConfigure('mysql:host=localhost;dbname=snippets','root','','');
+    $site->dbConfigure('mysql:host=localhost;dbname=ecommerce','root','','');
 };

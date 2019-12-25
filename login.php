@@ -1,7 +1,6 @@
 <?php
 $open = true;
 require 'lib/site.inc.php';
-
 $view = new View\Login($site, $_COOKIE);
 ?>
 <!DOCTYPE html>

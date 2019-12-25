@@ -24,6 +24,7 @@ class Login extends Controller {
 
         $email = strip_tags($post->email);
         $password = strip_tags($post->password);
+
         $user = $users->login($email, $password);
         $session[User::SESSION_NAME] = $user;
 

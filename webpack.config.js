@@ -18,17 +18,7 @@ module.exports = {
               to: 'img',
               flatten: true
           }
-      ]),
-        new HtmlWebPackPlugin([{
-            template: "./src/html/index.html",
-            filename: "./index.html",
-            inject: true
-        }]),
-        new HtmlWebPackPlugin([{
-            template: "./src/html/login.html",
-            filename: "./login.html",
-            inject: true
-        }])
+      ])
     ],
     module: {
         rules: [

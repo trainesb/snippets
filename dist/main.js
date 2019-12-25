@@ -44500,8 +44500,8 @@ Link.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _presentational_Header_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../presentational/Header.jsx */ "./src/js/components/presentational/Header.jsx");
-/* harmony import */ var _container_Nav_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../container/Nav.jsx */ "./src/js/components/container/Nav.jsx");
+/* harmony import */ var _container_Nav_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../container/Nav.jsx */ "./src/js/components/container/Nav.jsx");
+/* harmony import */ var _presentational_Header_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../presentational/Header.jsx */ "./src/js/components/presentational/Header.jsx");
 /* harmony import */ var _presentational_Footer_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../presentational/Footer.jsx */ "./src/js/components/presentational/Footer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -44548,10 +44548,14 @@ function (_Component) {
         id: 2,
         text: "Profile",
         link: "./profile.php"
+      }, {
+        id: 3,
+        text: "Login",
+        link: "./login.php"
       }];
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_container_Nav_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_container_Nav_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
         navLinks: navLinks
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Header_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: "Home"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentational_Footer_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }

@@ -2,7 +2,6 @@ import $ from 'jquery';
 import React from "react";
 import ReactDOM from "react-dom";
 
-//import {Home} from "./Home";
 import {Admin} from "./Admin";
 import {Topic} from "./Topic";
 import {Doc} from "./Doc";
@@ -27,5 +26,4 @@ $(document).ready(function () {
     new Doc();
     new Admin();
     new Topic();
-    //new Home();
 });
